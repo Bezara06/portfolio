@@ -1,0 +1,51 @@
+<!-- ---------------------- -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bezara</title>
+    <style>
+        @import url("style.css");
+    </style>
+</head>
+
+<body>
+    <div id="home"></div>
+    <header>
+        <div class="box_shadow"></div>
+        <div class="responsive_menu"><img src="imgs/Menu.png" alt=""></div>
+        <ul class="menu">
+            <li><a href="#home">ACCEUIL</a></li>
+            <li><a href="html/about.html">ABOUT</a></li>
+            <li><a href="html/cours.html">COURS</a></li>
+            <li><a href="html/projet.html">PROJET</a></li>
+        </ul>
+    </header>
+    <div class="text">
+        <h1>Cours et tutorielles</h1><span class="bezara"></span>
+        <p>Abonnez-vous a Anicet pour ne pas rater</p>
+        <p>Nos prochaines tutoriels!</p>
+
+        <div class="links">
+            <a href="#">login</a>
+            <a href="#">singin</a>
+        </div>
+    </div>
+    <script src="tp_23_12/app.js"></script>
+    <script src="/mattboldt-typed.js-adbd700/dist/typed.umd.js"></script>
+    <script src="/mattboldt-typed.js-adbd700/src/typed.js"></script>
+    <script>
+        const typed = new Typed('.bezara', {
+            strings: ['C++', 'JAVA', 'PASCAL', 'JAVASCRIPT', 'HTML', 'CSS', 'EXCEL'],
+            typeSpeed: 50,
+            backSpeed: 80,
+            backDelay: 1200,
+            loop: true,
+        });
+    </script>
+</body>
+
+</html>

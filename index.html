@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs\home.ico" type="image/x-icon">
+    <style>
+        @import url('style/home.css');
+    </style>
+    <link rel="stylesheet" href="style\home.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <div class="wrapper" id="topPage">
+
+        <nav class="nav">
+            <div class="nav-logo">
+                <img src="imgs/bezaraLogo.png" alt="">
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#topPage" class="link active">Accueil</a></li>
+                    <li><a href="html\about.html" class="link">Portfolio</a></li>
+                    <li><a href="html\cours.html" class="link">Cours</a></li>
+                    <li><a href="html\projet.html" class="link">Projet</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
+                <button class="btn" id="registreBtn" onclick="registre()">S'inscrire</button>
+            </div>
+
+            <div class="nav-menu-btn">
+                <img src="imgs\menu1.png" alt="" onclick="myMenuFunction()">
+            </div>
+        </nav>
+
+        <!-- Form BOx -->
+        <div class="form-box">
+
+            <!-- Login  -->
+            <form class="login-conntainer" id="login" method="post" action="#">
+                <div class="top">
+                    <span>Vous n'avez pas du compte? <a href="#" onclick="registre()">S'inscrire</a></span>
+                    <header>Se connecter</header>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" class="input-fiels" placeholder="Nom ou e-mail" required>
+                    <img src="imgs\user.png" alt="">
+                </div>
+
+
+                <div class="input-box">
+                    <input type="password" class="input-fiels" placeholder="Mot de passe" required>
+                    <img src="imgs\lock.png" alt="">
+                </div>
+
+                <div class="input-box">
+                    <input type="submit" value="LogIn" class="submit">
+                </div>
+
+                <div class="tow-col">
+                    <div class="one">
+                        <input type="checkbox" name="" id="login-check">
+                        <label for="login-check">Souviens-toi de moi</label>
+                    </div>
+                    <div class="tow">
+                        <label for=""><a href="#">| Mot de passe oubliée ?</a></label>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Inscription -->
+            <form class="registre-conntainer" id="registe" method="post" action="#">
+                <div class="top">
+                    <span>Avez-vous de compte? <a href="#" onclick="login()">Se connecter</a></span>
+                    <header>S'inscrire</header>
+                </div>
+
+                <div class="tow-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-fiels" placeholder="Nom" required>
+                        <img src="imgs\user.png" alt="">
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" class="input-fiels" placeholder="Prenom">
+                        <img src="imgs\user.png" alt="">
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <input type="email" class="input-fiels" placeholder="Email" required>
+                    <img src="imgs\email00.png" alt="">
+                </div>
+
+                <div class="input-box">
+                    <input type="password" class="input-fiels" placeholder="Mot de passe" required>
+                    <img src="imgs\lock.png" alt="">
+                </div>
+
+                <div class="input-box">
+                    <input type="submit" value="Registre" class="submit">
+                </div>
+
+                <div class="tow-col">
+                    <div class="one">
+                        <input type="checkbox" name="" id="registre-check">
+                        <label for="registre-check">Souviens-toi de moi</label>
+                    </div>
+
+                    <div class="tow">
+                        <label for=""><a href="#">Term & conditions</a></label>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        function myMenuFunction() {
+            var i = document.getElementById('navMenu');
+
+
+            if (i.className == " nav-menu") {
+                i.className += " responsive";
+            } else {
+                i.className = " nav-menu";
+            }
+        }
+    </script>
+
+    <script>
+        var a = document.getElementById('loginBtn');
+        var b = document.getElementById('registreBtn');
+        var x = document.getElementById('login');
+        var y = document.getElementById('registe');
+
+        function login() {
+            x.style.left = "4px";
+            y.style.right = "-520px";
+            a.className += " white-btn";
+            b.className = "btn";
+            x.style.opacity = 1;
+            y.style.opacity = 0;
+        }
+        function registre() {
+            x.style.left = "-510px";
+            y.style.right = "5px";
+            a.className = "btn";
+            b.className += " white-btn";
+            x.style.opacity = 0;
+            y.style.opacity = 1;
+        }
+    </script>
+</body>
+
+</html>
