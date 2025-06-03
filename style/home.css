@@ -275,6 +275,12 @@ header {
         list-style: none;
         flex-direction: column;
         text-align: center;
+
+    }
+
+    .nav-menu ul li {
+        transition: all 0.3s ease;
+        margin: 2rem 0 2rem 0;
     }
 
     .nav-menu-btn {
