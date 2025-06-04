@@ -288,13 +288,23 @@ header {
     }
 
     .nav-menu-btn img {
-        font-size: 25px;
+        /* font-size: 25px;
         color: white;
         padding: 10px;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 50%;
         cursor: pointer;
+        transition: 0.3s ease; */
+
+        font-size: 25px;
+        color: white;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        cursor: pointer;
         transition: 0.3s ease;
+        width: 34px;
+        margin: 30px 0 0 250px;
     }
 
     .nav-menu-btn img:hover {

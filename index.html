@@ -44,25 +44,25 @@
         <div class="form-box">
 
             <!-- Login  -->
-            <form class="login-conntainer" id="login" method="post" action="#">
+            <form class="login-conntainer" id="login" method="post" action="php/login.php">
                 <div class="top">
                     <span>Vous n'avez pas du compte? <a href="#" onclick="registre()">S'inscrire</a></span>
                     <header>Se connecter</header>
                 </div>
 
                 <div class="input-box">
-                    <input type="text" class="input-fiels" placeholder="Nom ou e-mail" required>
+                    <input type="text" name="nom" class="input-fiels" placeholder="Nom ou e-mail" required>
                     <img src="imgs\user.png" alt="">
                 </div>
 
 
                 <div class="input-box">
-                    <input type="password" class="input-fiels" placeholder="Mot de passe" required>
+                    <input type="password" name="sequirity" class="input-fiels" placeholder="Mot de passe" required>
                     <img src="imgs\lock.png" alt="">
                 </div>
 
                 <div class="input-box">
-                    <input type="submit" value="LogIn" class="submit">
+                    <input type="submit" name="LogIn" value="LogIn" class="submit">
                 </div>
 
                 <div class="tow-col">
