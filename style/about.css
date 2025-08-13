@@ -9,6 +9,7 @@
     scroll-behavior: smooth;
     letter-spacing: 0.5px;
     font-family: sans-serif;
+    text-decoration: none !important;
 }
 
 :root {
@@ -73,6 +74,7 @@ section {
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s ease;
+    text-decoration: none !important;
 }
 
 .logo {
@@ -100,7 +102,7 @@ section {
 
 .navbar a:hover,
 .navbar a.active {
-    border-bottom: 3px solid var(--bg-color);
+    border-bottom: 2px solid var(--bg-color);
     color: var(--text-color);
 }
 
@@ -207,7 +209,7 @@ span {
     fill: var(--main-color);
 }
 
-.btn {
+.btns {
     display: inline-block;
     padding: 1rem 2.8rem;
     background: var(--main-color);
@@ -220,7 +222,7 @@ span {
     transition: 0.3s ease;
 }
 
-.btn:hover {
+.btns:hover {
     transform: scale(1.01);
     box-shadow: 0 0 1.6rem var(--main-color);
 }
@@ -606,7 +608,7 @@ span {
     margin: 0.7rem 0.35rem;
 }
 
-.contact form .btn {
+.contact form .btns {
     margin-top: 2rem;
 }
 
