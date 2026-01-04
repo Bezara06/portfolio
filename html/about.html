@@ -201,9 +201,11 @@
                         <img src="../imgs/starFull.png" alt="" class="stars">
                         <img src="../imgs/starHalf.png" alt="" class="stars">
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non animi unde perferendis doloremque
-                        reprehenderit asperiores nihil nisi reiciendis a possimus, vitae quam, architecto natus
-                        consectetur ratione eligendi. Voluptates, hic quia?</p>
+                    <p style="text-align: justify;">Mika apprécie particulièrement la qualité du travail, la réactivité
+                        et le sens du détail apportés à chaque projet. Grâce à une écoute attentive et des solutions
+                        bien pensées, son expérience a été fluide, professionnelle et pleinement satisfaisante. Il
+                        recommande vivement pour le sérieux et la fiabilité.
+                    </p>
                 </div>
                 <a href="https://github.com/Stephanie1351">
                     <div class="speciality-iten">
@@ -215,10 +217,12 @@
                             <img src="../imgs/starFull.png" alt="" class="stars">
                             <img src="../imgs/starHalf.png" alt="" class="stars">
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non animi unde perferendis
-                            doloremque
-                            reprehenderit asperiores nihil nisi reiciendis a possimus, vitae quam, architecto natus
-                            consectetur ratione eligendi. Voluptates, hic quia?</p>
+                        <p style="text-align: justify;">
+                            Stephanie met en avant la créativité, l'organisation et la capacité à transformer ses idées
+                            en résultats concrets. Le projet a été mené avec clarté, respect des délais et une
+                            excellente communication. Une collaboration enrichissante qu'elle n'hésite pas à
+                            recommander.
+                        </p>
                     </div>
                 </a>
 
@@ -231,9 +235,10 @@
                         <img src="../imgs/starFull.png" alt="" class="stars">
                         <img src="../imgs/starHalf.png" alt="" class="stars">
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non animi unde perferendis doloremque
-                        reprehenderit asperiores nihil nisi reiciendis a possimus, vitae quam, architecto natus
-                        consectetur ratione eligendi. Voluptates, hic quia?</p>
+                    <p style="text-align: justify;">Angelinah a été séduite par l'approche professionnelle, la
+                        disponibilité et la qualité du rendu final. Chaque étape du projet a été expliquée avec
+                        simplicité et transparence, ce qui a renforcé la confiance et la satisfaction globale.
+                    </p>
                 </div>
             </div>
         </div>
@@ -244,8 +249,8 @@
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
                 <h2 style="font-size: 6rem;">Mes <span>projets</span></h2>
-                <p style="height: 46px;font-size: 16px;">Curae hendrerit donec commodo hendrerit egestas tempus, turpis
-                    facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
+                <p style="height: 46px;font-size: 16px;">De l’idée à la réalisation, ces projets reflètent ma passion
+                    pour le développement et la création de solutions digitales efficaces.</p>
             </div>
         </div>
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -259,24 +264,88 @@
                             menus, son ambiance et ses services. Il permet aux visiteurs de découvrir les plats,
                             consulter les horaires d’ouverture, voir des photos et contacter le restaurant via un
                             formulaire simple..</p>
-                        <button class="btns" data-bss-hover-animate="pulse" type="button"
-                            style="text-align: justify;font-size: 15px;">Voir plus&nbsp;</button>
+                        <button class="btns" data-bss-hover-animate="pulse" data-bs-toggle="modal"
+                            data-bs-target="#modalResto" type="button" style="text-align: justify;font-size: 15px;">Voir
+                            plus&nbsp;</button>
                     </div>
                 </div>
             </div>
+
+            <!-- Pop-up resto -->
+            <div class="modal fade" id="modalResto" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Projet – Site vitrine restaurant</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <img src="../files/img/1.png" class="img-fluid rounded mb-3" alt="Projet resto">
+
+                            <p class="fs-2">
+                                Site web moderne conçu pour présenter un restaurant, ses menus,
+                                son ambiance et faciliter la prise de contact avec les clients.
+                            </p>
+
+                            <ul>
+                                <li class="fs-3">HTML / CSS / JavaScript</li>
+                                <li class="fs-3">Design responsive</li>
+                                <li class="fs-3">Formulaire de contact</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End pop-up resto -->
+
             <div class="col">
                 <div><a href="../files/img/2.png"><img class="rounded img-fluid object-fit-cover d-block w-100"
                             style="height: 200px;" src="../files/img/2.png"></a>
                     <div class="py-4">
                         <h4 style="font-size: 22.1px;">Projet design – Forum (CSS, HTML, JS)</h4>
-                        <p style="font-size: 15px;">Un forum en ligne développé avec HTML, CSS et JavaScript. L’objectif
-                            est d’offrir un espace d’échange où les utilisateurs peuvent publier des messages, lire des
+                        <p style="font-size: 15px;">Un forum en ligne développé avec HTML, CSS et JavaScript. L'objectif
+                            est d'offrir un espace d'échange où les utilisateurs peuvent publier des messages, lire des
                             discussions et interagir dans une interface moderne, responsive et agréable visuellement,
                             grâce à un design soigné.</p>
-                        <button class="btns btn-primary" type="button" style="font-size: 15px;">Voir plus&nbsp;</button>
+                        <button class="btns btn-primary" data-bs-toggle="modal" data-bs-target="#modalForum"
+                            type="button" style="font-size: 15px;">Voir plus&nbsp;</button>
                     </div>
                 </div>
             </div>
+
+            <!-- Desing forum pop-up  -->
+            <div class="modal fade" id="modalForum" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Projet – Forum (HTML, CSS, JS)</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <img src="../files/img/2.png" class="img-fluid rounded mb-3" alt="Projet forum">
+
+                            <p class="fs-2">
+                                Forum de discussion permettant aux utilisateurs de poser des questions,
+                                partager des idées et interagir dans une interface moderne et fluide.
+                            </p>
+
+                            <ul>
+                                <li class="fs-3">Interface responsive</li>
+                                <li class="fs-3">Système de discussion</li>
+                                <li class="fs-3">Design UI/UX soigné</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end pop-up desing forum  -->
+
             <div class="col">
                 <div><a href="../files/img/3.png"><img class="rounded img-fluid object-fit-cover d-block w-100"
                             style="height: 200px;" src="../files/img/3.png"></a>
@@ -284,12 +353,43 @@
                         <h4 style="font-size: 22.1px;">Application Java – Gestion Fokontany</h4>
                         <p style="font-size: 15px;">Application bureautique développée en Java pour aider un fokontany à
                             gérer ses services (certificats, demandes administratives, dossiers des habitants). Elle
-                            permet d’enregistrer les citoyens, suivre les demandes, générer des documents officiels et
+                            permet d'enregistrer les citoyens, suivre les demandes, générer des documents officiels et
                             simplifier le travail administratif</p>
-                        <button class="btns" type="button" style="font-size: 15px;">Voir plus&nbsp;</button>
+                        <button class="btns" data-bs-toggle="modal" data-bs-target="#modalFokontany" type="button"
+                            style="font-size: 15px;">Voir plus&nbsp;</button>
                     </div>
                 </div>
             </div>
+            <!-- pop-up fokontany -->
+            <div class="modal fade" id="modalFokontany" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Application Java – Gestion Fokontany</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <img src="../files/img/3.png" class="img-fluid rounded mb-3" alt="Projet fokontany">
+
+                            <p class="fs-2">
+                                Application bureautique Java destinée à faciliter la gestion
+                                administrative d'un fokontany : citoyens, certificats, dossiers.
+                            </p>
+
+                            <ul>
+                                <li class="fs-3">Java SE / Swing</li>
+                                <li class="fs-3">Gestion des citoyens</li>
+                                <li class="fs-3">Génération de documents</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- End pop-up fokontany -->
             <div class="col">
                 <div><a href="../files/img/4.png"></a><img class="rounded img-fluid object-fit-cover d-block w-100"
                         style="height: 200px;" src="../files/img/4.png"></a>
@@ -357,7 +457,8 @@
             </a>
         </div>
         <p class="copyright">
-            <i>&copy;Bezara Anicé -All Right Reserved 2025</i>
+            <i>&copy;Bezara Anicé <span id="year"></span> All rights reserved.
+            </i>
         </p>
     </footer>
     <a href="#home" class="return" name="return"><img src="../imgs/collapse.png" alt="Return"></a>

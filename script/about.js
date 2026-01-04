@@ -16,7 +16,7 @@ const navs = document.querySelectorAll('.navs')
 window.addEventListener('scroll', function () {
     const scrollTop = window.pageY || document.documentElement.scrollTop;
     const active = window.pageYOffset;
-    console.log(active)
+    // console.log(active)
     if (scrollTop > 100) {
         document.querySelector('.return img').style.display = 'block';
     } else {
@@ -68,3 +68,4 @@ window.addEventListener('scroll', function () {
         navs[5].classList.remove("active")
     }
 });
+document.getElementById("year").textContent = new Date().getFullYear();

@@ -653,7 +653,7 @@ span {
     fill: var(--main-color);
 }
 
-.footer .copyright {
+.footer .copyright, #year {
     margin-top: 20px;
     text-align: center;
     font-size: 16px;
