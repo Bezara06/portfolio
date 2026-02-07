@@ -122,7 +122,7 @@ section {
 
 .home-img img {
     width: 30vw;
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
     border: 2px solid var(--main-color);
     border-radius: 7px;
     cursor: pointer;
@@ -207,7 +207,7 @@ span {
     display: inline-block;
     padding: 1rem 2.8rem;
     background: var(--main-color);
-    border-radius: 4rem;
+    border-radius: 7px;
     font-size: 1.6rem;
     box-shadow: none;
     color: var(--bg-color);
@@ -360,6 +360,16 @@ span {
 .service-box {
     font-size: 1.8rem;
     color: var(--main-color);
+}
+
+.service-box .img {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+.service-icons {
+    width: 34px;
+    margin: 2rem 0;
+    gap: 1rem;
 }
 
 .service-box h3 {
