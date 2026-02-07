@@ -121,18 +121,12 @@ section {
 }
 
 .home-img img {
-    width: 20vw;
-    border-radius: 50%;
-    box-shadow: 0 0 25px var(--main-color);
+    width: 30vw;
+    margin-top: 4rem;
+    border: 2px solid var(--main-color);
+    border-radius: 7px;
     cursor: pointer;
-    animation: floatImage 4s ease-in-out infinite;
     transition: 0.4s ease;
-}
-
-.home-img img:hover {
-    box-shadow: 0 0 25px var(--main-color),
-        0 0 35px var(--main-color),
-        0 0 45px var(--main-color);
 }
 
 @keyframes floatImage {
@@ -768,6 +762,7 @@ span {
     .home-img {
         width: 70vw;
         margin-top: 4rem;
+        margin-bottom: 4rem;
     }
 
     .about {
