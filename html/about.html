@@ -411,17 +411,19 @@
         <h2 class="heading">
             Contacter <span>Moi</span>
 
-            <form action="http://localhost:3000/html/about.html" method="post" id="sendMailForm">
+            <form id="contact-form">
+                <input type="hidden" name="to_email" value="anicebezara@gmail.com">
                 <div class="input-box">
-                    <input type="text" placeholder="Nom complet" required>
-                    <input type="email" name="Email" id="" placeholder="Adresse mail" required>
+                    <input type="text" name="from_name" placeholder="Nom complet" required>
+                    <input type="email" name="from_email" placeholder="Adresse mail" required>
                 </div>
                 <div class="input-box">
-                    <input type="tel" name="tel" id="" placeholder="Tel" required>
-                    <input type="text" name="objet" id="" placeholder="E-mail objet" data-tooltip="Votre Objet">
+                    <input type="tel" name="phone" placeholder="Tel" required>
+                    <input type="text" name="subject" placeholder="E-mail objet" data-tooltip="Votre Objet">
                 </div>
-                <textarea name="Message" id="" cols="30" rows="10" minlength="100" maxlength="5000"
+                <textarea name="message" cols="30" rows="10" minlength="10" maxlength="5000" required
                     placeholder="Rediger votre message ..."></textarea>
+                <p id="contact-status" class="form-status" aria-live="polite"></p>
                 <input type="submit" value="Envoyer Message" class="btns">
             </form>
         </h2>
@@ -463,6 +465,7 @@
     </footer>
     <a href="#home" class="return" name="return"><img src="../imgs/collapse.png" alt="Return"></a>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="../script/about.js"></script>
     <script src="../mattboldt-typed.js-adbd700/dist/typed.umd.js"></script>
     <script src="../script/server.js"></script>

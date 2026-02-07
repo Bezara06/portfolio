@@ -69,3 +69,44 @@ window.addEventListener('scroll', function () {
     }
 });
 document.getElementById("year").textContent = new Date().getFullYear();
+
+const contactForm = document.getElementById('contact-form');
+const contactStatus = document.getElementById('contact-status');
+
+if (contactForm && window.emailjs) {
+    emailjs.init('Kx3LFCRWYr22DLAqH'); // Remplacez par votre User ID EmailJS
+
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        if (contactStatus) {
+            contactStatus.textContent = '';
+        }
+
+        const submitButton = contactForm.querySelector('input[type="submit"]');
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.value = 'Envoi...';
+        }
+
+        try {
+            await emailjs.sendForm('service_9z9z6xm', 'bezara_i11zkby', contactForm);
+            if (contactStatus) {
+                contactStatus.textContent = 'Message envoye avec succes.';
+            }
+            contactForm.reset();
+        } catch (error) {
+            console.error('EmailJS error:', error);
+            if (contactStatus) {
+                contactStatus.textContent = "Echec de l'envoi. Reessayez.";
+            }
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.value = 'Envoyer Message';
+            }
+        }
+    });
+} else if (contactForm) {
+    console.warn('EmailJS SDK not loaded.');
+}
