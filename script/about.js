@@ -70,11 +70,23 @@ window.addEventListener('scroll', function () {
 });
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const aboutToggle = document.querySelector('.about-toggle');
+const aboutMore = document.getElementById('about-more');
+
+if (aboutToggle && aboutMore) {
+    aboutToggle.addEventListener('click', () => {
+        const isExpanded = aboutToggle.getAttribute('aria-expanded') === 'true';
+        aboutToggle.setAttribute('aria-expanded', String(!isExpanded));
+        aboutMore.hidden = isExpanded;
+        aboutToggle.textContent = isExpanded ? 'Voir Plus' : 'Voir Moins';
+    });
+}
+
 const contactForm = document.getElementById('contact-form');
 const contactStatus = document.getElementById('contact-status');
 
 if (contactForm && window.emailjs) {
-    emailjs.init('Kx3LFCRWYr22DLAqH'); // Remplacez par votre User ID EmailJS
+    emailjs.init('Kx3LFCRWYr22DLAqH'); //User ID EmailJS
 
     contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -92,13 +104,21 @@ if (contactForm && window.emailjs) {
         try {
             await emailjs.sendForm('service_9z9z6xm', 'bezara_i11zkby', contactForm);
             if (contactStatus) {
-                contactStatus.textContent = 'Message envoye avec succes.';
+                if (document.querySelector('.form-status').classList.contains('danger')) {
+                    document.querySelector('.form-status').classList.remove('danger');
+                }
+                document.querySelector('.form-status').classList.add('success');
+                contactStatus.textContent = 'Message envoye avec succes!';
             }
             contactForm.reset();
         } catch (error) {
             console.error('EmailJS error:', error);
             if (contactStatus) {
-                contactStatus.textContent = "Echec de l'envoi. Reessayez.";
+                if (document.querySelector('.form-status').classList.contains('success')) {
+                    document.querySelector('.form-status').classList.remove('success');
+                }
+                document.querySelector('.form-status').classList.add('danger');
+                contactStatus.textContent = "Echec de l'envoi. Reessayez!";
             }
         } finally {
             if (submitButton) {

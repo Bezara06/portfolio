@@ -293,15 +293,15 @@ span {
     width: 20vw;
     border: 2px solid var(--main-color);
     border-radius: 50%;
-    box-shadow: 0 0 25px var(--main-color);
+    box-shadow: 0 0 2px var(--main-color);
     cursor: pointer;
     transition: 0.4s ease;
 }
 
 .about-img img:hover {
-    box-shadow: 0 0 25px var(--main-color),
-        0 0 35px var(--main-color),
-        0 0 45px var(--main-color);
+    box-shadow: 0 0 2px var(--main-color),
+        0 0 3px var(--main-color),
+        0 0 4px var(--main-color);
 }
 
 .heading {
@@ -325,6 +325,10 @@ span {
 .about-content p {
     font-size: 1.8rem;
     margin: 2rem 0 3rem;
+}
+
+.about-more {
+    margin-top: -1rem;
 }
 
 /* Service Code */
@@ -366,6 +370,7 @@ span {
     width: 80px;
     margin-bottom: 1rem;
 }
+
 .service-icons {
     width: 34px;
     margin: 2rem 0;
@@ -402,9 +407,10 @@ span {
 
 .speciality-box .img {
     width: 15rem;
+    height: auto;
     border-radius: 50%;
     border: 3px solid var(--main-color);
-    box-shadow: 0 0 25px var(--main-color);
+    box-shadow: 0 0 2px var(--main-color);
 }
 
 .wrapper {
@@ -451,7 +457,8 @@ span {
 }
 
 .stars {
-    width: 1vw;
+    width: 2vw;
+    height: auto;
 }
 
 /* Projet code */
@@ -460,6 +467,10 @@ span {
     /* background: url(/imgs/desert.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.col .py-4{
+    text-align: center;
 }
 
 #projet .projet-container {
@@ -503,6 +514,13 @@ span {
     margin-bottom: 1%;
 }
 
+.carte{
+    padding: 3px;
+    border: 1px solid var(--main-color);
+    border-radius: 7px;
+box-shadow: 2px 2px 10px #007f7238;
+}
+
 .projet-container a:hover {
     color: var(--main-color);
 }
@@ -544,6 +562,9 @@ span {
     color: black;
     width: fit-content;
     padding-bottom: 2px;
+}
+.desc-projet{
+    text-align: justify;
 }
 
 
@@ -614,6 +635,11 @@ span {
 
 .contact form .btns {
     margin-top: 2rem;
+}
+
+.btns.plus{
+    position: relative;
+    margin: 2px auto;
 }
 
 .contact .form-status {
@@ -776,7 +802,7 @@ span {
         margin-left: 1rem;
     }
 
-    .home-img {
+    .home-img img {
         width: 70vw;
         margin-top: 4rem;
         margin-bottom: 4rem;
@@ -862,4 +888,19 @@ span {
 ::-webkit-scrollbar-track {
     background-color: var(--bg-color);
     width: 60px;
+}
+
+.form-status{
+    border-radius: 7px;
+    padding: 4px 0 4px 0;
+}
+
+.form-status.danger {
+    color: #fff;
+    background-color: #91141485;
+}
+
+.form-status.success {
+    color: #ffffff;
+    background-color: rgba(0, 128, 0, 0.493);
 }
