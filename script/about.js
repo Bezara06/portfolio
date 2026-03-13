@@ -1,4 +1,4 @@
-let menu = document.querySelector('#menu-icon');
+﻿let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 menu.onclick = () => {
@@ -13,6 +13,14 @@ window.onscroll = () => {
 
 const navs = document.querySelectorAll('.navs')
 
+window.onload = function () {
+    const scrollTop = window.pageY || document.documentElement.scrollTop;
+    if (scrollTop > 100) {
+        document.querySelector('.return img').style.display = 'block';
+    } else {
+        document.querySelector('.return img').style.display = 'none';
+    }
+};
 window.addEventListener('scroll', function () {
     const scrollTop = window.pageY || document.documentElement.scrollTop;
     const active = window.pageYOffset;
@@ -130,3 +138,4 @@ if (contactForm && window.emailjs) {
 } else if (contactForm) {
     console.warn('EmailJS SDK not loaded.');
 }
+
