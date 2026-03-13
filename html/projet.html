@@ -1,34 +1,521 @@
+﻿
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet</title>
+    <title>Projets</title>
     <link rel="shortcut icon" href="/imgs/goal.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        @import url("/style/projet.css");
+        :root {
+            --bg-0: #0c0f14;
+            --bg-1: #141a22;
+            --bg-2: #1d2430;
+            --ink-0: #eef4ff;
+            --ink-1: #c6d2e3;
+            --ink-2: #8fa3bf;
+            --accent-0: #4dd6ff;
+            --accent-1: #7b8cff;
+            --accent-2: #f7b84b;
+            --success: #4bd37b;
+            --border: rgba(140, 160, 190, 0.18);
+            --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Sora", "Segoe UI", sans-serif;
+            color: var(--ink-0);
+            background: radial-gradient(1200px 700px at 15% 10%, rgba(77, 214, 255, 0.18), transparent 60%),
+                radial-gradient(1200px 900px at 85% 0%, rgba(123, 140, 255, 0.2), transparent 65%),
+                var(--bg-0);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 28px;
+            background: rgba(12, 15, 20, 0.85);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .brand-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            color: #0a0d12;
+            background: linear-gradient(135deg, var(--accent-0), var(--accent-1));
+        }
+
+        .topbar nav {
+            display: flex;
+            gap: 18px;
+            color: var(--ink-2);
+            font-size: 0.95rem;
+        }
+
+        .topbar nav a:hover {
+            color: var(--ink-0);
+        }
+
+        .cta {
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, var(--accent-0), var(--accent-1));
+            color: #0a0d12;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .page {
+            padding: 28px;
+            display: grid;
+            gap: 36px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            align-items: center;
+            padding: 28px;
+            border-radius: 24px;
+            background: rgba(20, 26, 34, 0.75);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2rem, 3vw, 3.1rem);
+        }
+
+        .hero p {
+            margin: 0 0 20px;
+            color: var(--ink-1);
+            max-width: 560px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--ink-0);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, var(--accent-0), var(--accent-1));
+            border-color: transparent;
+            color: #0a0d12;
+        }
+
+        .hero-panel {
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(12, 15, 20, 0.6);
+            border: 1px solid var(--border);
+            display: grid;
+            gap: 14px;
+        }
+
+        .hero-panel img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .metric {
+            padding: 12px;
+            border-radius: 14px;
+            background: rgba(29, 36, 48, 0.6);
+            border: 1px solid var(--border);
+        }
+
+        .metric span {
+            color: var(--ink-2);
+            font-size: 0.85rem;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter {
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--ink-1);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .filter.active {
+            color: #0b0e12;
+            background: linear-gradient(135deg, var(--accent-0), var(--accent-1));
+            border-color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(20, 26, 34, 0.7);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 12px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--ink-2);
+            font-size: 0.8rem;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--ink-2);
+            font-size: 0.85rem;
+        }
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .process-card {
+            padding: 16px;
+            border-radius: 16px;
+            background: rgba(18, 22, 30, 0.7);
+            border: 1px solid var(--border);
+        }
+
+        .process-card h4 {
+            margin: 0 0 8px;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 12px;
+            padding: 20px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: rgba(18, 22, 30, 0.7);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--accent-0);
+            margin-top: 6px;
+        }
+
+        .footer {
+            padding: 20px 28px 40px;
+            color: var(--ink-2);
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="box">
-        
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-badge">PX</div>
+            Projets Design
         </div>
-        <div class="box">
-        
-        </div>
-        <div class="box">
-        
-        </div>
-        <div class="box">
-        
-        </div>
-        <div class="box">
-        
-        </div>
-    </div>
-</body>
+        <nav>
+            <a href="../index.html">Accueil</a>
+            <a href="#projects">Portfolio</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a class="cta" href="#contact">Demander un devis</a>
+    </header>
 
+    <main class="page">
+        <section class="hero">
+            <div>
+                <h1>Des projets pensés pour la performance, la clarté et l'impact.</h1>
+                <p>
+                    Une sélection de projets web, mobile et produit avec des interfaces flexibles, modulaires et faciles
+                    à maintenir. Chaque carte contient un aperçu visuel, les objectifs UX et les résultats clés.
+                </p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#projects">Voir les projets</a>
+                    <button class="button" type="button" id="resetFilters">Réinitialiser les filtres</button>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <img src="../imgs/projet-hero.jpg" alt="Capture d'ecran du projet principal">
+                <div class="metrics">
+                    <div class="metric">
+                        <div>+42%</div>
+                        <span>Conversion moyenne</span>
+                    </div>
+                    <div class="metric">
+                        <div>3 sprints</div>
+                        <span>Time-to-market</span>
+                    </div>
+                    <div class="metric">
+                        <div>12 modules</div>
+                        <span>Composants UI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="filters" aria-label="Filtres">
+            <button class="filter active" data-filter="all">Tous</button>
+            <button class="filter" data-filter="web">Web</button>
+            <button class="filter" data-filter="mobile">Mobile</button>
+            <button class="filter" data-filter="saas">SaaS</button>
+            <button class="filter" data-filter="branding">Branding</button>
+            <button class="filter" data-filter="data">Data</button>
+        </section>
+
+        <section class="grid" id="projects">
+            <article class="card" data-tags="web saas uiux">
+                <img src="../imgs/projet-01.jpg" alt="Capture d'ecran du projet Atlas">
+                <h3>Atlas CRM</h3>
+                <p>Tableau de bord SaaS avec modules adaptatifs et navigation contextuelle.</p>
+                <div class="tag-list">
+                    <span class="tag">Web</span>
+                    <span class="tag">SaaS</span>
+                    <span class="tag">UX Research</span>
+                </div>
+                <div class="card-footer">
+                    <span>Résultat: +38% d'engagement</span>
+                    <span>2025</span>
+                </div>
+            </article>
+
+            <article class="card" data-tags="mobile branding">
+                <img src="../imgs/projet-02.jpg" alt="Capture d'ecran du projet Lumen">
+                <h3>Lumen Mobile</h3>
+                <p>Application mobile lifestyle avec parcours simplifié et micro-interactions.</p>
+                <div class="tag-list">
+                    <span class="tag">Mobile</span>
+                    <span class="tag">Branding</span>
+                    <span class="tag">UI System</span>
+                </div>
+                <div class="card-footer">
+                    <span>Résultat: +4.7★ store</span>
+                    <span>2024</span>
+                </div>
+            </article>
+
+            <article class="card" data-tags="web data">
+                <img src="../imgs/projet-03.jpg" alt="Capture d'ecran du projet Prism">
+                <h3>Prism Analytics</h3>
+                <p>Plateforme data avec storytelling visuel et filtres intelligents.</p>
+                <div class="tag-list">
+                    <span class="tag">Data</span>
+                    <span class="tag">Web</span>
+                    <span class="tag">Dashboard</span>
+                </div>
+                <div class="card-footer">
+                    <span>Résultat: -26% temps d'analyse</span>
+                    <span>2025</span>
+                </div>
+            </article>
+
+            <article class="card" data-tags="web branding">
+                <img src="../imgs/projet-04.jpg" alt="Capture d'ecran du projet Echo">
+                <h3>Echo Studio</h3>
+                <p>Site vitrine immersif avec grille flexible et animations sobres.</p>
+                <div class="tag-list">
+                    <span class="tag">Web</span>
+                    <span class="tag">Branding</span>
+                    <span class="tag">Motion</span>
+                </div>
+                <div class="card-footer">
+                    <span>Résultat: +62% leads</span>
+                    <span>2026</span>
+                </div>
+            </article>
+        </section>
+        <p id="resultCount" style="color: var(--ink-2); font-size: 0.9rem; margin: 0;">4 projets affichés</p>
+
+        <section class="process" id="process">
+            <div class="process-card">
+                <h4>Découverte</h4>
+                <p>Audit UX, cartographie des parcours et priorisation des objectifs métier.</p>
+            </div>
+            <div class="process-card">
+                <h4>Design System</h4>
+                <p>Composants réutilisables, grilles flexibles et guidelines pour une cohérence durable.</p>
+            </div>
+            <div class="process-card">
+                <h4>Livraison</h4>
+                <p>Spécifications, prototypes interactifs et handoff complet pour les équipes dev.</p>
+            </div>
+        </section>
+
+        <section class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                    <strong>01. Cadrage</strong>
+                    <div>Objectifs, KPIs, risques et jalons du projet.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                    <strong>02. Architecture</strong>
+                    <div>Wireframes, design system et prototypage avancé.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                    <strong>03. Itération</strong>
+                    <div>Tests utilisateurs, optimisation continue et livraison finale.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero" id="contact">
+            <div>
+                <h2>Prêt à lancer votre prochain projet ?</h2>
+                <p>Parlons de votre produit, de vos objectifs et d'une interface qui convertit.</p>
+            </div>
+            <div class="hero-actions">
+                <a class="button primary" href="mailto:contact@portfolio.com">Contact direct</a>
+                <a class="button" href="../index.html">Voir le portfolio complet</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        Interfaces conçues pour la clarté, la vitesse et l'impact. Remplacez les visuels par vos captures d'ecran.
+    </footer>
+
+    <script>
+        const filters = Array.from(document.querySelectorAll(".filter"));
+        const cards = Array.from(document.querySelectorAll(".card"));
+        const counter = document.getElementById("resultCount");
+        const resetButton = document.getElementById("resetFilters");
+
+        function applyFilter(tag) {
+            let visible = 0;
+            cards.forEach(card => {
+                const tags = card.dataset.tags.split(" ");
+                const match = tag === "all" || tags.includes(tag);
+                card.style.display = match ? "grid" : "none";
+                if (match) visible += 1;
+            });
+            counter.textContent = `${visible} projets affichés`;
+        }
+
+        filters.forEach(button => {
+            button.addEventListener("click", () => {
+                filters.forEach(item => item.classList.remove("active"));
+                button.classList.add("active");
+                applyFilter(button.dataset.filter);
+            });
+        });
+
+        resetButton.addEventListener("click", () => {
+            filters.forEach(item => item.classList.remove("active"));
+            const allButton = filters.find(item => item.dataset.filter === "all");
+            if (allButton) allButton.classList.add("active");
+            applyFilter("all");
+        });
+    </script>
+</body>
 </html>
