@@ -1,201 +1,982 @@
+﻿
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours</title>
+    <title>Interactive Courses</title>
     <link rel="shortcut icon" href="../imgs/learn.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        @import url("/style/cours.css");
+        :root {
+            --bg-0: #0e1116;
+            --bg-1: #151a21;
+            --bg-2: #1d2430;
+            --ink-0: #e8eef6;
+            --ink-1: #c6d2e3;
+            --ink-2: #8fa3bf;
+            --accent-0: #4dd6ff;
+            --accent-1: #7b8cff;
+            --accent-2: #f7b84b;
+            --success: #4bd37b;
+            --danger: #ff7b7b;
+            --card: #141a22;
+            --glass: rgba(20, 26, 34, 0.7);
+            --border: rgba(140, 160, 190, 0.18);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+            color: var(--ink-0);
+            background: radial-gradient(1200px 800px at 10% 10%, rgba(77, 214, 255, 0.15), transparent 60%),
+                radial-gradient(1200px 900px at 90% 0%, rgba(123, 140, 255, 0.18), transparent 65%),
+                var(--bg-0);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 28px;
+            backdrop-filter: blur(16px);
+            background: rgba(14, 17, 22, 0.85);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--accent-0), var(--accent-1));
+            color: #0b0e12;
+            font-weight: 700;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search {
+            position: relative;
+        }
+
+        .search input {
+            width: min(360px, 50vw);
+            padding: 12px 14px 12px 38px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            color: var(--ink-0);
+            font-size: 0.95rem;
+        }
+
+        .search span {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ink-2);
+            font-size: 0.85rem;
+        }
+
+        .progress {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--ink-1);
+        }
+
+        .progress-bar {
+            width: 140px;
+            height: 6px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent-0), var(--accent-1));
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 28px;
+            padding: 28px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 90px;
+            height: fit-content;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar h3 {
+            margin: 0 0 12px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-2);
+        }
+
+        .nav-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--ink-1);
+            transition: 0.2s ease;
+        }
+
+        .nav-item.active {
+            background: rgba(77, 214, 255, 0.08);
+            border-color: rgba(77, 214, 255, 0.3);
+            color: var(--ink-0);
+        }
+
+        .nav-item span {
+            font-size: 0.8rem;
+            color: var(--ink-2);
+        }
+
+        .hero {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 28px;
+            background: linear-gradient(135deg, rgba(77, 214, 255, 0.15), rgba(123, 140, 255, 0.15));
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2rem, 3vw, 3rem);
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--ink-1);
+            max-width: 700px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+            font-family: inherit;
+        }
+        .button.primary {
+            background: linear-gradient(135deg, var(--accent-0), var(--accent-1));
+            color: #0b0e12;
+        }
+
+        .button.ghost {
+            background: transparent;
+            border-color: var(--border);
+            color: var(--ink-0);
+        }
+
+        .lesson {
+            margin-bottom: 28px;
+            padding: 24px;
+            border-radius: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .lesson-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .lesson-header h2 {
+            margin: 0 0 6px;
+            font-size: 1.8rem;
+        }
+
+        .lesson-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: var(--ink-2);
+            font-size: 0.9rem;
+        }
+
+        .chip {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        .lesson-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: rgba(12, 15, 20, 0.7);
+        }
+
+        .card h4 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .code-block {
+            margin-top: 12px;
+            position: relative;
+            border-radius: 14px;
+            padding: 14px;
+            background: #0b0f14;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.85rem;
+            overflow: auto;
+        }
+
+        .code-block button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--ink-1);
+            cursor: pointer;
+        }
+
+        .step-list {
+            display: grid;
+            gap: 12px;
+            margin: 12px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .step-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            color: var(--ink-1);
+        }
+
+        .step-list span {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            background: rgba(77, 214, 255, 0.15);
+            color: var(--accent-0);
+            font-weight: 700;
+        }
+
+        .quiz {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--ink-0);
+        }
+
+        .quiz-result {
+            font-size: 0.85rem;
+            color: var(--ink-2);
+        }
+
+        .lesson-footer {
+            margin-top: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .mark {
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--ink-0);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .mark.done {
+            background: rgba(75, 211, 123, 0.2);
+            border-color: rgba(75, 211, 123, 0.5);
+            color: var(--success);
+        }
+
+        .footer {
+            padding: 30px 28px 50px;
+            color: var(--ink-2);
+            text-align: center;
+        }
+
+        .return {
+            margin-top: 12px;
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 980px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .search input {
+                width: min(100%, 520px);
+            }
+        }
     </style>
-    <link rel="stylesheet" href="../style/cours.css">
 </head>
 
 <body>
-    <!-- <div class="logo"></div> -->
-    <nav class="nav-bar">
-        <a href="../index.html">HOME</a>
-        <a href="#cpp">C++</a>
-        <a href="#java">JAVA</a>
-        <a href="#pascal">PASCAL</a>
-        <a href="#html5">HTML5</a>
-        <a href="#css">CSS</a>
-        <a href="#network">NETWORK</a>
-        <a href="#algo">ALGO</a>
-        <a href="#exel">EXEL</a>
-        <a href="#javascript">JS</a>
-    </nav>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-badge">UX</div>
+            Interactive Tutorial Hub
+        </div>
+        <div class="top-actions">
+            <div class="search">
+                <span>Search</span>
+                <input id="lessonSearch" type="search" placeholder="Find a course, topic, or keyword">
+            </div>
+            <div class="progress">
+                <span id="progressText">0% complete</span>
+                <div class="progress-bar"><span id="progressBar"></span></div>
+            </div>
+        </div>
+    </header>
 
-    <div class="cpp" id="cpp">
-        <h1>C++</h1>
-        <h2>Introduction</h2>
-        <h3>Cet programme affiche "Hello World!" au flux de sortie standard:</h3>
-        <fieldset>
-            #include <span class="mot-cle">
-                < iostream> <br>
-            </span>
-            <span class="motcle">int</span> main()
-            {
-            std::cout << "Hello World!" << std::endl; <br> }
-        </fieldset>
+    <div class="layout">
+        <aside class="sidebar">
+            <h3>Curriculum</h3>
+            <nav class="nav-list" id="lessonNav">
+                <a class="nav-item" href="#cpp">C++ <span>Basics</span></a>
+                <a class="nav-item" href="#java">Java <span>Starter</span></a>
+                <a class="nav-item" href="#pascal">Pascal <span>Syntax</span></a>
+                <a class="nav-item" href="#html5">HTML5 <span>Markup</span></a>
+                <a class="nav-item" href="#css">CSS <span>Layout</span></a>
+                <a class="nav-item" href="#network">Network <span>Fundamentals</span></a>
+                <a class="nav-item" href="#algo">Algorithms <span>Thinking</span></a>
+                <a class="nav-item" href="#excel">Excel <span>Productivity</span></a>
+                <a class="nav-item" href="#javascript">JavaScript <span>Interactive</span></a>
+            </nav>
+        </aside>
 
-        <h4>Analyse</h4>
-        <p>
-            On va examiner chaque partie de ce code en detail: <br>
-            #include <span class="mot-cle">
-                < iostream>
-            </span> est l’adresse préprocesseur (preprocessor directive) qui contient le fichiers
-            entête de standard C++ iostream.
-            <span class="motcle">iostream</span> est un librairie standard fichier d’en-tête qui contiennent les
-            définitions de l’entrée standard
-            et sortie. Ces définitions sont comprises dans l’espace de nom « namespace » expliqué ci-dessous :
-        </p>
-        <p>
-            Les standard input /output (I/O) fournis le chemin à un programme pour avoir l’entrée et sortie à un
-            système externe i.e. terminale.
-            <span class="motcle">int</span> main () { … } définie une nouvelle fonction nommée main. Par convention, la
-            fonction main est
-            appelée en haut de l’exécution des programmes. En programme C++, il y a exactement un seule
-            fonction main, et doit retourner un nombre de type entier.
-        </p>
-        <p>
-            Par convention, le code de sortie <span class="mot-cle">0</span> ou <span
-                class="mot-cle">EXIT_SUCCESS</span> d’un programme est interprété comme succès
-            par un système qui exécute les programmes. Autre code de retourne est associé avec une erreur ;
-            std ::cout << “ Hello World !” << std::endl; affiche “Hello World!” au flux de sortie standard : std est un
-                espace de nom, et :: est le scope de l’opérateur de résolution qui permet de rechercher de l’objet par
-                nom avec un espace de nom. std::cout est le flux de sortie standard, défini dans iostream, et il affiche
-                à la sortie standard (stdout). << est, dans ce contexte, le l’opérateur de flux d’insertion, est appelé
-                parce qu’il insère un objet dans le flux d’objet. La librairie standard défini le << operateur pour
-                effectuer l’insertion des données pour certains type dans le flux de sortie. </p>
+        <main>
+            <section class="hero">
+                <h1>Build skills with a guided, interactive tutorial flow.</h1>
+                <p>
+                    Each module includes a quick overview, objectives, a runnable mental model, and a short check-in.
+                    Use the search bar to filter, mark lessons complete to track progress, and copy code blocks in one
+                    click.
+                </p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#cpp">Start the journey</a>
+                    <button class="button ghost" id="resetProgress">Reset progress</button>
+                </div>
+            </section>
+            <section class="lesson" id="cpp" data-tags="c++ basics hello world iostream">
+                <div class="lesson-header">
+                    <div>
+                        <h2>C++ Essentials</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Beginner</span>
+                            <span class="chip">15 min</span>
+                            <span class="chip">Console I/O</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="cpp">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Understand the structure of a minimal C++ program and the role of headers and namespaces.
+                        <ul class="step-list">
+                            <li><span>1</span>Include headers</li>
+                            <li><span>2</span>Define `main`</li>
+                            <li><span>3</span>Print to stdout</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Hello World</h4>
+                        <div class="code-block" data-copy="cpp-code">
+                            <button type="button">Copy</button>
+                            <pre id="cpp-code">#include &lt;iostream&gt;
 
-                <ul>
-                    <li>
-                        <h2>Les variables</h2>
-                    </li>
-                </ul>
-    </div>
+int main() {
+    std::cout &lt;&lt; "Hello World!" &lt;&lt; std::endl;
+    return 0;
+}</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which header enables `std::cout`?</div>
+                        <input type="text" data-answer="iostream" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
 
-    <div id="java" class="java">
-        <h1>JAVA</h1>
-        <h2>Introduction</h2>
-        <h3>Create your forst project</h3>
-        <fieldset>
-            <span class="mot-cle">public</span> class HelloWorld {<br>
-            <span class="mot-cle">public</span> static void main(String[] args) {<br>
-            System.out.println("Hello, World!"); <br>
-            } <br>
-            }
-        </fieldset>
+            <section class="lesson" id="java" data-tags="java basics hello world class main">
+                <div class="lesson-header">
+                    <div>
+                        <h2>Java Starter</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Beginner</span>
+                            <span class="chip">12 min</span>
+                            <span class="chip">JVM Basics</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="java">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Learn the Java class structure and how `main` boots a program.
+                        <ul class="step-list">
+                            <li><span>1</span>Class container</li>
+                            <li><span>2</span>Static main</li>
+                            <li><span>3</span>Console output</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Hello World</h4>
+                        <div class="code-block" data-copy="java-code">
+                            <button type="button">Copy</button>
+                            <pre id="java-code">public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which keyword keeps `main` callable without an object?</div>
+                        <input type="text" data-answer="static" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
 
-    </div>
+            <section class="lesson" id="pascal" data-tags="pascal syntax begin end">
+                <div class="lesson-header">
+                    <div>
+                        <h2>Pascal Foundations</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Beginner</span>
+                            <span class="chip">10 min</span>
+                            <span class="chip">Procedural Flow</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="pascal">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Grasp the `program`, `begin`, and `end.` structure used in classic Pascal.
+                        <ul class="step-list">
+                            <li><span>1</span>Program header</li>
+                            <li><span>2</span>Statements block</li>
+                            <li><span>3</span>Termination</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Hello World</h4>
+                        <div class="code-block" data-copy="pascal-code">
+                            <button type="button">Copy</button>
+                            <pre id="pascal-code">program HelloWorld;
+begin
+    writeln('Hello, World!');
+end.</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which keyword starts the Pascal instruction block?</div>
+                        <input type="text" data-answer="begin" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="lesson" id="html5" data-tags="html5 markup structure semantic">
+                <div class="lesson-header">
+                    <div>
+                        <h2>HTML5 Structure</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Beginner</span>
+                            <span class="chip">14 min</span>
+                            <span class="chip">Semantic</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="html5">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Learn the semantic backbone of web pages for accessibility and SEO.
+                        <ul class="step-list">
+                            <li><span>1</span>Document outline</li>
+                            <li><span>2</span>Semantic tags</li>
+                            <li><span>3</span>Readable structure</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Starter Template</h4>
+                        <div class="code-block" data-copy="html-code">
+                            <button type="button">Copy</button>
+                            <pre id="html-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;main&gt;...&lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which tag holds the primary page content?</div>
+                        <input type="text" data-answer="main" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
 
-    <div id="pascal" class="pascal">
-        <h1>PASCAL</h1>
-        <h2>Introduction</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta inventore earum, fuga corporis beatae
-        veniam eaque
-        asperiores blanditiis, vel laboriosam, commodi doloribus. A aliquam officia voluptatem rerum iste cupiditate!
-        Nostrum eos maiores corporis magnam quasi tempora rem culpa! Magnam fugit eius laboriosam expedita impedit
-        commodi, qui
-        modi aliquid alias corrupti eveniet dolor voluptate recusandae eos nostrum tempore doloremque consequuntur.
-        Aspernatur placeat maxime perspiciatis nisi totam et deserunt obcaecati illum rem. Amet iste unde, neque
-        deserunt
-        officiis incidunt, quae aperiam quibusdam consequatur labore quisquam? Eaque eligendi rerum dolorem vitae
-        expedita!
-    </div>
+            <section class="lesson" id="css" data-tags="css layout flexbox grid">
+                <div class="lesson-header">
+                    <div>
+                        <h2>CSS Layouts</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Intermediate</span>
+                            <span class="chip">18 min</span>
+                            <span class="chip">Flexbox + Grid</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="css">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Master modern layout techniques to build responsive UI quickly.
+                        <ul class="step-list">
+                            <li><span>1</span>Flex direction</li>
+                            <li><span>2</span>Grid areas</li>
+                            <li><span>3</span>Responsive rhythm</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Layout Snippet</h4>
+                        <div class="code-block" data-copy="css-code">
+                            <button type="button">Copy</button>
+                            <pre id="css-code">.layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 28px;
+}
 
-    <div id="html5" class="html5">
-        <h1>HTML5</h1>
-        <h2>Introduction</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta inventore earum, fuga corporis beatae
-        veniam eaque
-        asperiores blanditiis, vel laboriosam, commodi doloribus. A aliquam officia voluptatem rerum iste cupiditate!
-        Nostrum eos maiores corporis magnam quasi tempora rem culpa! Magnam fugit eius laboriosam expedita impedit
-        commodi, qui
-        modi aliquid alias corrupti eveniet dolor voluptate recusandae eos nostrum tempore doloremque consequuntur.
-        Aspernatur placeat maxime perspiciatis nisi totam et deserunt obcaecati illum rem. Amet iste unde, neque
-        deserunt
-        officiis incidunt, quae aperiam quibusdam consequatur labore quisquam? Eaque eligendi rerum dolorem vitae
-        expedita!
-    </div>
+@media (max-width: 980px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which property turns on CSS Grid?</div>
+                        <input type="text" data-answer="display: grid" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
 
-    <div id="css" class="css">
-        <h1>CSS</h1>
-        <h2>Introduction</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta inventore earum, fuga corporis beatae
-        veniam eaque
-        asperiores blanditiis, vel laboriosam, commodi doloribus. A aliquam officia voluptatem rerum iste cupiditate!
-        Nostrum eos maiores corporis magnam quasi tempora rem culpa! Magnam fugit eius laboriosam expedita impedit
-        commodi, qui
-        modi aliquid alias corrupti eveniet dolor voluptate recusandae eos nostrum tempore doloremque consequuntur.
-        Aspernatur placeat maxime perspiciatis nisi totam et deserunt obcaecati illum rem. Amet iste unde, neque
-        deserunt
-        officiis incidunt, quae aperiam quibusdam consequatur labore quisquam? Eaque eligendi rerum dolorem vitae
-        expedita!
-    </div>
+            <section class="lesson" id="network" data-tags="network tcp ip basics">
+                <div class="lesson-header">
+                    <div>
+                        <h2>Network Fundamentals</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Beginner</span>
+                            <span class="chip">16 min</span>
+                            <span class="chip">TCP/IP</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="network">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Understand how data moves from client to server using layered protocols.
+                        <ul class="step-list">
+                            <li><span>1</span>IP addressing</li>
+                            <li><span>2</span>Transport layers</li>
+                            <li><span>3</span>HTTP request flow</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Request Anatomy</h4>
+                        <div class="code-block" data-copy="net-code">
+                            <button type="button">Copy</button>
+                            <pre id="net-code">GET /learn HTTP/1.1
+Host: example.com
+User-Agent: YourBrowser
+Accept: */*</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which protocol moves packets across networks?</div>
+                        <input type="text" data-answer="ip" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="lesson" id="algo" data-tags="algorithm data structures complexity">
+                <div class="lesson-header">
+                    <div>
+                        <h2>Algorithm Thinking</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Intermediate</span>
+                            <span class="chip">20 min</span>
+                            <span class="chip">Big-O</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="algo">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Measure performance and choose the right data structures for the job.
+                        <ul class="step-list">
+                            <li><span>1</span>Analyze time</li>
+                            <li><span>2</span>Choose structure</li>
+                            <li><span>3</span>Optimize loops</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Complexity Example</h4>
+                        <div class="code-block" data-copy="algo-code">
+                            <button type="button">Copy</button>
+                            <pre id="algo-code">for (int i = 0; i &lt; n; i++) {
+    for (int j = 0; j &lt; n; j++) {
+        sum += matrix[i][j];
+    }
+}
+// Time: O(n^2)</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>What is the complexity of the double loop?</div>
+                        <input type="text" data-answer="o(n^2)" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
 
-    <div id="network" class="network">
-        <h1>NETWORK</h1>
-        <h2>Introduction</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta inventore earum, fuga corporis beatae
-        veniam eaque
-        asperiores blanditiis, vel laboriosam, commodi doloribus. A aliquam officia voluptatem rerum iste cupiditate!
-        Nostrum eos maiores corporis magnam quasi tempora rem culpa! Magnam fugit eius laboriosam expedita impedit
-        commodi, qui
-        modi aliquid alias corrupti eveniet dolor voluptate recusandae eos nostrum tempore doloremque consequuntur.
-        Aspernatur placeat maxime perspiciatis nisi totam et deserunt obcaecati illum rem. Amet iste unde, neque
-        deserunt
-        officiis incidunt, quae aperiam quibusdam consequatur labore quisquam? Eaque eligendi rerum dolorem vitae
-        expedita!
-    </div>
+            <section class="lesson" id="excel" data-tags="excel formulas productivity">
+                <div class="lesson-header">
+                    <div>
+                        <h2>Excel Productivity</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Beginner</span>
+                            <span class="chip">12 min</span>
+                            <span class="chip">Formulas</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="excel">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Use essential formulas to automate calculations and reporting.
+                        <ul class="step-list">
+                            <li><span>1</span>SUM</li>
+                            <li><span>2</span>IF logic</li>
+                            <li><span>3</span>Lookup basics</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Starter Formula</h4>
+                        <div class="code-block" data-copy="excel-code">
+                            <button type="button">Copy</button>
+                            <pre id="excel-code">=IF(B2 &gt;= 70, "Pass", "Review")</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which formula adds a range of cells?</div>
+                        <input type="text" data-answer="sum" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
 
-    <div id="algo" class="algo">
-        <h1>ALGORITHM</h1>
-        <h2>Introduction</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta inventore earum, fuga corporis beatae
-        veniam eaque
-        asperiores blanditiis, vel laboriosam, commodi doloribus. A aliquam officia voluptatem rerum iste cupiditate!
-        Nostrum eos maiores corporis magnam quasi tempora rem culpa! Magnam fugit eius laboriosam expedita impedit
-        commodi, qui
-        modi aliquid alias corrupti eveniet dolor voluptate recusandae eos nostrum tempore doloremque consequuntur.
-        Aspernatur placeat maxime perspiciatis nisi totam et deserunt obcaecati illum rem. Amet iste unde, neque
-        deserunt
-        officiis incidunt, quae aperiam quibusdam consequatur labore quisquam? Eaque eligendi rerum dolorem vitae
-        expedita!
-    </div>
+            <section class="lesson" id="javascript" data-tags="javascript dom events interactive">
+                <div class="lesson-header">
+                    <div>
+                        <h2>JavaScript Interaction</h2>
+                        <div class="lesson-meta">
+                            <span class="chip">Intermediate</span>
+                            <span class="chip">20 min</span>
+                            <span class="chip">DOM + Events</span>
+                        </div>
+                    </div>
+                    <button class="mark" data-lesson="javascript">Mark complete</button>
+                </div>
+                <div class="lesson-grid">
+                    <div class="card">
+                        <h4>Outcome</h4>
+                        Attach event listeners and update the DOM for rich interactivity.
+                        <ul class="step-list">
+                            <li><span>1</span>Select elements</li>
+                            <li><span>2</span>Listen to events</li>
+                            <li><span>3</span>Change UI state</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Click Handler</h4>
+                        <div class="code-block" data-copy="js-code">
+                            <button type="button">Copy</button>
+                            <pre id="js-code">const button = document.querySelector(".cta");
 
-    <div id="exel" class="exel">
-        <h1>EXEL</h1>
-        <h2>Introduction</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum soluta inventore earum, fuga corporis beatae
-        veniam eaque asperiores blanditiis, vel laboriosam, commodi doloribus. A aliquam officia voluptatem rerum iste
-        cupiditate!
-        Nostrum eos maiores corporis magnam quasi tempora rem culpa! Magnam fugit eius laboriosam expedita impedit
-        commodi, qui modi aliquid alias corrupti eveniet dolor voluptate recusandae eos nostrum tempore doloremque
-        consequuntur.
-        Aspernatur placeat maxime perspiciatis nisi totam et deserunt obcaecati illum rem. Amet iste unde, neque
-        deserunt officiis incidunt, quae aperiam quibusdam consequatur labore quisquam? Eaque eligendi rerum dolorem
-        vitae expedita!
-    </div>
-
-    <div id="javascript" class="javascript">
-        <h1>JavaScript</h1>
-        <h2>Introduction</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, esse qui quos quod dolor porro fuga vitae,
-        voluptatum quas sapiente pariatur voluptatibus perferendis veritatis accusantium nihil! Deleniti vero placeat
-        molestias?
-        Illum, in quam ex obcaecati dolores quos deleniti hic, repellendus illo vitae corporis. Iste molestias, quod
-        ullam corrupti hic quo, veniam sapiente cupiditate quidem rerum sunt ex et sed. Enim.
-        Esse, magni quos provident, autem maxime sunt repellendus atque hic cum quasi eos rerum iure quibusdam eveniet
-        accusantium laboriosam mollitia sequi unde ratione, magnam modi commodi velit! Beatae, debitis. Quia?
+button.addEventListener("click", () => {
+    button.textContent = "Done!";
+});</pre>
+                        </div>
+                    </div>
+                    <div class="card quiz">
+                        <h4>Quick Check</h4>
+                        <div>Which method attaches an event listener?</div>
+                        <input type="text" data-answer="addeventlistener" placeholder="Type your answer">
+                        <button class="button ghost" data-check>Check answer</button>
+                        <div class="quiz-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
     <footer class="footer">
-        <a href="#cpp" name="return"><img src="../imgs/collapse.png" alt="Return"></a>
+        Built as an interactive tutorial page. Your progress is saved locally in this browser.
+        <div><a class="return" href="#cpp">Back to top</a></div>
     </footer>
-    <script src="../script/cours.js"></script>
-</body>
 
+    <script>
+        const navItems = Array.from(document.querySelectorAll(".nav-item"));
+        const sections = Array.from(document.querySelectorAll(".lesson"));
+        const progressText = document.getElementById("progressText");
+        const progressBar = document.getElementById("progressBar");
+        const resetProgress = document.getElementById("resetProgress");
+        const searchInput = document.getElementById("lessonSearch");
+
+        const stored = JSON.parse(localStorage.getItem("lesson-progress") || "{}");
+
+        function updateProgressUI() {
+            const completed = sections.filter(section => stored[section.id]);
+            const percent = Math.round((completed.length / sections.length) * 100);
+            progressText.textContent = `${percent}% complete`;
+            progressBar.style.width = `${percent}%`;
+            document.querySelectorAll(".mark").forEach(button => {
+                const id = button.dataset.lesson;
+                if (stored[id]) {
+                    button.classList.add("done");
+                    button.textContent = "Completed";
+                } else {
+                    button.classList.remove("done");
+                    button.textContent = "Mark complete";
+                }
+            });
+        }
+
+        document.querySelectorAll(".mark").forEach(button => {
+            button.addEventListener("click", () => {
+                const id = button.dataset.lesson;
+                stored[id] = !stored[id];
+                localStorage.setItem("lesson-progress", JSON.stringify(stored));
+                updateProgressUI();
+            });
+        });
+
+        resetProgress.addEventListener("click", () => {
+            Object.keys(stored).forEach(key => delete stored[key]);
+            localStorage.setItem("lesson-progress", JSON.stringify(stored));
+            updateProgressUI();
+        });
+
+        document.querySelectorAll("[data-copy]").forEach(block => {
+            const button = block.querySelector("button");
+            const target = document.getElementById(block.dataset.copy);
+            button.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(target.textContent);
+                    button.textContent = "Copied";
+                    setTimeout(() => (button.textContent = "Copy"), 1500);
+                } catch (err) {
+                    button.textContent = "Use Ctrl+C";
+                }
+            });
+        });
+
+        document.querySelectorAll("[data-check]").forEach(button => {
+            button.addEventListener("click", () => {
+                const input = button.previousElementSibling;
+                const result = button.nextElementSibling;
+                const answer = input.dataset.answer.trim().toLowerCase();
+                const value = input.value.trim().toLowerCase();
+                if (!value) {
+                    result.textContent = "Type an answer to check.";
+                    return;
+                }
+                if (value === answer) {
+                    result.textContent = "Correct. Nice work.";
+                    result.style.color = "var(--success)";
+                } else {
+                    result.textContent = "Not quite. Try again.";
+                    result.style.color = "var(--danger)";
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navItems.forEach(item => item.classList.remove("active"));
+                        const active = navItems.find(item => item.getAttribute("href") === `#${entry.target.id}`);
+                        if (active) active.classList.add("active");
+                    }
+                });
+            },
+            { rootMargin: "-30% 0px -60% 0px" }
+        );
+
+        sections.forEach(section => observer.observe(section));
+
+        searchInput.addEventListener("input", event => {
+            const query = event.target.value.trim().toLowerCase();
+            sections.forEach(section => {
+                const haystack = `${section.id} ${section.dataset.tags}`.toLowerCase();
+                const match = haystack.includes(query);
+                section.style.display = match || !query ? "block" : "none";
+            });
+        });
+
+        updateProgressUI();
+    </script>
+</body>
 </html>
