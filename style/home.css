@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8)50%, rgba(0, 0, 0, 0.6)50%), url('/imgs/backG.jpg');
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8)50%, rgba(0, 0, 0, 0.6)50%), url('imgs/backG.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -79,6 +79,7 @@ body {
 
 .nav-menu ul {
     display: flex;
+    gap: 25px;
 }
 
 .nav-menu ul li {
@@ -89,13 +90,22 @@ body {
     text-decoration: none;
     font-weight: 500;
     color: white;
-    padding-bottom: 15px;
-    margin: 0 25px;
+    /* padding-bottom: 15px; */
+    /* margin: 0 25px; */
+    transition: 0.3s ease;
 }
 
-.link:hover,
-.active {
-    border-bottom: 2px solid white;
+.link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.link:hover::after {
+    width: 100%;
 }
 
 .nav-button .btn {
@@ -319,6 +329,11 @@ header {
 
     .nav-menu-btn img:hover {
         background: rgba(255, 255, 255, 0.5);
+    }
+
+    #logo-bezara {
+        width: 60px;
+        height: 60px;
     }
 }
 

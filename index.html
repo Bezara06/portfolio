@@ -18,7 +18,8 @@
 
         <nav class="nav">
             <div class="nav-logo">
-                <img src="files/img/logo ba texture.png" id="logo-bezara" alt="Stylized letters B and A with circular decorative elements in a playful, whimsical font on a bright turquoise background. The design feels creative and energetic.">
+                <img src="files/img/logo ba texture.png" id="logo-bezara"
+                    alt="Stylized letters B and A with circular decorative elements in a playful, whimsical font on a bright turquoise background. The design feels creative and energetic.">
             </div>
 
             <div class="nav-menu" id="navMenu">
@@ -36,7 +37,8 @@
             </div>
 
             <div class="nav-menu-btn">
-                <img src="imgs\menu1.png" alt="" onclick="myMenuFunction()">
+                <img src="imgs\menu1.png" alt="" onclick="myMenuFunction()"
+                    style="width: 30px; height: 30px; cursor: pointer;  background: rgba(255, 255, 255, 0.3); border-radius: 5px; padding: 5px; transition: background 0.3s ease;   ">
             </div>
         </nav>
 
@@ -127,12 +129,16 @@
         function myMenuFunction() {
             var i = document.getElementById('navMenu');
 
-
-            if (i.className == " nav-menu") {
-                i.className += " responsive";
+            if (i.classList.contains("responsive")) {
+                i.classList.remove("responsive");
             } else {
-                i.className = " nav-menu";
+                i.classList.add("responsive");
             }
+            // if (i.className == " nav-menu") {
+            //     i.className += " responsive";
+            // } else {
+            //     i.className = " nav-menu";
+            // }
         }
     </script>
 
