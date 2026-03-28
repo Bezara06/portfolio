@@ -572,6 +572,27 @@ span {
     text-align: justify;
 }
 
+.view-project {
+    text-align: center;
+    margin-top: 2rem;
+}
+.view-project a {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    border-radius: 7px;
+    font-size: 1.6rem;
+    box-shadow: none;
+    color: var(--bg-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+.view-project a:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 1.6rem var(--main-color);
+}
+
 
 /* Conatc and footer code */
 
