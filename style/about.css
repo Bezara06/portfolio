@@ -35,6 +35,35 @@
     } */
 }
 
+@keyframes bounce {
+    0%, 20%, 53%, 80%, to {
+        -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    40%, 43% {
+        -webkit-transform: translate3d(0, -30px, 0);
+        transform: translate3d(0, -30px, 0);
+    }
+
+    40%, 43%, 70% {
+        -webkit-animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+    }
+
+    70% {
+        -webkit-transform: translate3d(0, -15px, 0);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, -4px, 0);
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
 html {
     font-size: 62.5%;
     overflow-x: hidden;
@@ -576,6 +605,13 @@ span {
     text-align: center;
     margin-top: 2rem;
 }
+
+.view-project.animate {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: bounce;
+}
+
 .view-project a {
     display: inline-block;
     padding: 1rem 2.8rem;
@@ -588,9 +624,17 @@ span {
     font-weight: 600;
     transition: 0.3s ease;
 }
+
 .view-project a:hover {
     transform: scale(1.01);
     box-shadow: 0 0 1.6rem var(--main-color);
+}
+
+.arrow-link {
+    width: 24px;
+    fill: #ffffff;
+    margin-left: 10px;
+    font-size: 1.6rem;
 }
 
 

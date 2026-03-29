@@ -139,3 +139,20 @@ if (contactForm && window.emailjs) {
     console.warn('EmailJS SDK not loaded.');
 }
 
+//Animate view all projewct
+const viweAllPro = document.querySelector('.view-project');
+let counter = 0;
+setInterval((e) => {
+    if(counter >= 10){
+        counter = 0;
+    }
+    if (viweAllPro.classList.contains('animate')) {
+        viweAllPro.classList.remove('animate')
+    } else {
+        if(counter === 9){
+            viweAllPro.classList.add('animate')
+        }
+    }
+    counter ++;
+    // console.log(counter)
+}, 1000);
