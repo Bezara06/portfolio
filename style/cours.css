@@ -52,6 +52,7 @@ a {
 }
 
 .brand {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -72,12 +73,14 @@ a {
 }
 
 .top-actions {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
 .search {
+    width: 100%;
     position: relative;
 }
 
@@ -101,6 +104,7 @@ a {
 }
 
 .progress {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -376,11 +380,11 @@ a {
     color: var(--success);
 }
 
-.footer {
+/* .footer {
     padding: 30px 28px 50px;
     color: var(--ink-2);
     text-align: center;
-}
+} */
 
 .return {
     margin-top: 12px;
@@ -411,5 +415,9 @@ a {
 
     .search input {
         width: min(100%, 520px);
+    }
+
+    .top-actions {
+        justify-content: space-around;
     }
 }

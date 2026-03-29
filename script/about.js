@@ -143,16 +143,16 @@ if (contactForm && window.emailjs) {
 const viweAllPro = document.querySelector('.view-project');
 let counter = 0;
 setInterval((e) => {
-    if(counter >= 10){
+    if (counter >= 10) {
         counter = 0;
     }
     if (viweAllPro.classList.contains('animate')) {
         viweAllPro.classList.remove('animate')
     } else {
-        if(counter === 9){
+        if (counter === 9) {
             viweAllPro.classList.add('animate')
         }
     }
-    counter ++;
+    counter++;
     // console.log(counter)
 }, 1000);

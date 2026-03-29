@@ -1,0 +1,67 @@
+:root {
+    --ico-color: #1d2430;
+    --bg-color: #fff;
+    --snd-bg-color: #d5fdf9;
+    --text-color: #000;
+    --main-color: #4dd6ff;
+}
+
+.footer {
+    background: var(--bg-color);
+    position: relative;
+    bottom: 0;
+    width: auto;
+    padding: 40px 0;
+    -o-text-overflow: clip;
+    overflow: hidden;
+    /* background: var(--snd-bg-color); */
+}
+
+.footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+    color: var(--main-color);
+}
+
+.footer .social>a {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    border-radius: 50%;
+    border: 2px solid var(--main-color);
+}
+
+.footer .social>a>svg {
+    display: inline-flex;
+    color: var(--main-color);
+    width: 26px;
+    height: 26px;
+    transition: 0.3s ease;
+    fill: var(--ico-color);
+}
+
+.footer .social svg:hover {
+    fill: var(--main-color);
+}
+
+.footer .copyright, #year {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--ico-color);
+}
+
+@media(max-width: 400px) {
+    .footer .social>a {
+    width: 36px;
+    height: 36px;
+    margin: 0 8px;
+}
+    .footer .social>a>svg {
+        width: 24px;
+        height: 24px;
+    }
+}

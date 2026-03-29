@@ -50,6 +50,7 @@ a {
 
 .brand {
     display: flex;
+    width: 100%;
     align-items: center;
     gap: 12px;
     font-weight: 700;
@@ -69,7 +70,9 @@ a {
 }
 
 .topbar nav {
+    width: 100%;
     display: flex;
+    justify-content: center;
     gap: 18px;
     color: var(--ink-2);
     font-size: 0.95rem;
@@ -77,6 +80,11 @@ a {
 
 .topbar nav a:hover {
     color: var(--ink-0);
+}
+
+.avis {
+    width: 100%;
+    text-align: end;
 }
 
 .cta {
@@ -120,6 +128,7 @@ a {
 
 .hero-actions {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
 }
@@ -283,16 +292,21 @@ a {
     margin-top: 6px;
 }
 
-.footer {
+/* .footer {
     padding: 20px 28px 40px;
     color: var(--ink-2);
     text-align: center;
-}
+} */
 
 @media (max-width: 900px) {
     .topbar {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+    }
+
+    .avis {
+        text-align: center;
+        padding: 1rem 0 1rem 0;
     }
 }
