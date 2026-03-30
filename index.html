@@ -1,170 +1,265 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezara Anicé | Developpeur & Designer Web</title>
+    <meta name="description"
+        content="Landing page professionnelle de Bezara Anicé, developpeur web et designer UI/UX specialise dans la création de solutions modernes, rapides et elegantes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="imgs\home.ico" type="image/x-icon">
-    <style>
-        @import url('style/home.css');
-    </style>
-    <link rel="stylesheet" href="style\home.css">
-    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="site-shell">
+        <header class="site-header">
+            <div class="container">
+                <nav class="nav">
+                    <a class="brand" href="#accueil">
+                        <img src="files/img/logo ba texture.png" alt="Logo Bezara Anicé">
+                        <div class="brand-copy">
+                            <strong>Bezara Anicé</strong>
+                            <span>Developpeur web # Designer UI/UX</span>
+                        </div>
+                    </a>
 
-    <div class="wrapper" id="topPage">
+                    <div class="nav-links">
+                        <a href="#services">Services</a>
+                        <a href="#avantages">Avantages</a>
+                        <a href="#processus">Processus</a>
+                        <a href="html/about.html">Portfolio</a>
+                    </div>
 
-        <nav class="nav">
-            <div class="nav-logo">
-                <img src="files/img/logo ba texture.png" id="logo-bezara"
-                    alt="Stylized letters B and A with circular decorative elements in a playful, whimsical font on a bright turquoise background. The design feels creative and energetic.">
+                    <a class="nav-cta" href="html/about.html">Voir mon univers</a>
+                </nav>
             </div>
+        </header>
 
-            <div class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="#topPage" class="link active">Accueil</a></li>
-                    <li><a href="html/about.html" class="link">Portfolio</a></li>
-                    <li><a href="html/cours.html" class="link">Cours</a></li>
-                    <li><a href="html/projet.html" class="link">Projet</a></li>
-                </ul>
+        <main>
+            <section class="hero" id="accueil">
+                <div class="container hero-grid">
+                    <div class="hero-copy">
+                        <span class="eyebrow">Disponible pour vos projets web modernes</span>
+                        <h1>Je conçois des expériences web claires, rapides et memorables.</h1>
+                        <p>
+                            Je suis Bezara Anicé, developpeur et designer passionné. J'aide les marques, independants
+                            et entreprises a transformer leurs idées en interfaces élégantes, pages de presentation
+                            performantes et solutions digitales credibles qui inspirent confiance des la premiere
+                            visite.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a class="button-primary" href="html/about.html">Decouvrir mon portfolio</a>
+                            <a class="button-secondary" href="html/about.html#contact">Demarrer un projet</a>
+                        </div>
+
+                        <div class="hero-metrics">
+                            <div class="metric">
+                                <strong>UI/UX soignée</strong>
+                                <span>Des interfaces pensees pour convaincre et guider vos visiteurs.</span>
+                            </div>
+                            <div class="metric">
+                                <strong>Dev propre</strong>
+                                <span>Des pages modernes, responsives et structurees pour durer.</span>
+                            </div>
+                            <div class="metric">
+                                <strong>Approche humaine</strong>
+                                <span>Une collaboration simple, serieuse et centrée sur votre objectif.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="hero-panel" aria-label="Apercu des services Bezara Anice">
+                        <div class="hero-card-top">
+                            <span class="mini-badge">
+                                <img src="files/img/logo ba texture.png" alt=""> Identite digitale premium
+                            </span>
+                            <span class="mini-badge">France & Madagascar & Remote</span>
+                        </div>
+
+                        <div class="hero-showcase">
+                            <div class="showcase-card">
+                                <strong>Ce que je peux créer pour vous</strong>
+                                <p>
+                                    Landing pages, sites vitrines, pages de presentation produit, interfaces
+                                    professionnelles et expériences responsives qui valorisent votre image.
+                                </p>
+                                <div class="stack-list">
+                                    <span>HTML / CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>Bootstrap</span>
+                                    <span>Java</span>
+                                </div>
+                            </div>
+
+                            <div class="showcase-card">
+                                <strong>Mon objectif</strong>
+                                <p>
+                                    Créer une presence en ligne qui rassure, attire et donne envie d'aller plus loin,
+                                    avec un design net et un contenu facile a comprendre.
+                                </p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="section" id="services">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <h2>Des services utiles pour une image digitale forte</h2>
+                        </div>
+                        <p>
+                            Chaque section est pensée pour aider vos visiteurs a comprendre votre offre rapidement,
+                            ressentir votre professionnalisme et passer a l'action sans hesitation.
+                        </p>
+                    </div>
+
+                    <div class="services-grid">
+                        <article class="card">
+                            <div class="card-icon"><img src="imgs/web.png" alt="Ic�ne web"></div>
+                            <h3>Landing page professionnelle</h3>
+                            <p>
+                                Une page d'accueil premium pour presenter votre activite, mettre en avant vos points
+                                forts et convertir vos visiteurs en contacts serieux.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <div class="card-icon"><img src="imgs/desing.png" alt="Icone design"></div>
+                            <h3>Design UI/UX moderne</h3>
+                            <p>
+                                Une interface claire, elegante et intuitive, avec une hierarchie visuelle solide et une
+                                expérience coherente sur mobile comme sur desktop.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <div class="card-icon"><img src="imgs/java.png" alt="Icone developpement"></div>
+                            <h3>Integration & developpement</h3>
+                            <p>
+                                Une réalisation propre et responsive, prete à être mise en ligne, évolutive et adaptée
+                                a vos besoins actuels comme futurs.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="avantages">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <h2>Pourquoi travailler avec moi</h2>
+                        </div>
+                        <p>
+                            J'accorde autant d'importance au rendu final qu'a la façon dont vos visiteurs vivent la
+                            page. Le but n'est pas seulement d'etre beau, mais d'être lisible, crédible et efficace.
+                        </p>
+                    </div>
+
+                    <div class="benefits-grid">
+                        <article class="card">
+                            <strong>Clarté du message</strong>
+                            <p>
+                                Votre proposition de valeur est mise en avant avec des textes courts, visuels et faciles
+                                a retenir.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <strong>Esthétique rassurante</strong>
+                            <p>
+                                Une direction visuelle propre, professionnelle et actuelle, pour inspirer confiance des
+                                les premieres secondes.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <strong>Responsive réel</strong>
+                            <p>
+                                Votre page reste fluide et impactante sur téléphone, tablette et grand écran, sans perte
+                                de lisibilité.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="processus">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <h2>Une methode simple, serieuse et orientée résultat</h2>
+                        </div>
+                        <p>
+                            J'avance avec une logique claire afin de transformer votre besoin en une page qui refléte
+                            vraiment votre valeur et facilite la prise de contact.
+                        </p>
+                    </div>
+
+                    <div class="process-grid">
+                        <article class="card process-step" data-step="01">
+                            <strong>Ecoute</strong>
+                            <p>Nous clarifions votre besoin, votre cible et le message principal a faire passer.</p>
+                        </article>
+
+                        <article class="card process-step" data-step="02">
+                            <strong>Structure</strong>
+                            <p>Je définis une architecture de page fluide pour guider naturellement l'utilisateur.</p>
+                        </article>
+
+                        <article class="card process-step" data-step="03">
+                            <strong>Design</strong>
+                            <p>Je construis une interface moderne avec vos couleurs, vos contenus et votre identite.</p>
+                        </article>
+
+                        <article class="card process-step" data-step="04">
+                            <strong>Livraison</strong>
+                            <p>Vous obtenez une page propre, responsive et prete a soutenir votre presence en ligne.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="cta-band">
+                        <div class="cta-band-grid">
+                            <div>
+                                <h2>Vous voulez une page d'accueil qui donne une vraie bonne premiere impression ?</h2>
+                                <p>
+                                    Je peux vous aider a créer une presence digitale elegante, professionnelle et
+                                    mémorable, en accord avec votre activité et vos objectifs.
+                                </p>
+                            </div>
+                            <a class="footer-cta" href="html/about.html#contact">Me contacter</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-row">
+                <div>&copy;
+                    <script>document.write(new Date().getFullYear())</script> BEZARA Anicé.
+                </div>
+                <div class="footer-links">
+                    <a href="html/about.html">A propos</a>
+                    <a href="html/projet.html">Projets</a>
+                    <a href="html/about.html#contact">Contact</a>
+                    <a href="html/cours.html">Cours en ligne</a>
+                </div>
             </div>
-
-            <div class="nav-button">
-                <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
-                <button class="btn" id="registreBtn" onclick="registre()">S'inscrire</button>
-            </div>
-
-            <div class="nav-menu-btn">
-                <img src="imgs\menu1.png" alt="" onclick="myMenuFunction()"
-                    style="width: 30px; height: 30px; cursor: pointer;  background: rgba(255, 255, 255, 0.3); border-radius: 5px; padding: 5px; transition: background 0.3s ease;   ">
-            </div>
-        </nav>
-
-        <!-- Form BOx -->
-        <div class="form-box">
-
-            <!-- Login  -->
-            <form class="login-conntainer" id="login" method="post" action="php/login.php">
-                <div class="top">
-                    <span>Vous n'avez pas du compte? <a href="#" onclick="registre()">S'inscrire</a></span>
-                    <header>Se connecter</header>
-                </div>
-
-                <div class="input-box">
-                    <input type="text" name="nom" class="input-fiels" placeholder="Nom ou e-mail">
-                    <img src="imgs\user.png" alt="">
-                </div>
-
-
-                <div class="input-box">
-                    <input type="password" name="sequirity" class="input-fiels" placeholder="Mot de passe">
-                    <img src="imgs\lock.png" alt="">
-                </div>
-
-                <div class="input-box">
-                    <input type="submit" name="LogIn" value="Se connecter" class=" submit">
-                </div>
-
-                <div class="tow-col">
-                    <div class="one">
-                        <input type="checkbox" name="" id="login-check">
-                        <label for="login-check">Souviens-toi de moi</label>
-                    </div>
-                    <div class="tow">
-                        <label for=""><a href="html/about.html">| Continue a Portfolio ↣</a></label>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Inscription -->
-            <form class="registre-conntainer" id="registe" method="post" action="php/singin.php">
-                <div class="top">
-                    <span>Avez-vous de compte? <a href="#" onclick="login()">Se connecter</a></span>
-                    <header>S'inscrire</header>
-                </div>
-
-                <div class="tow-forms">
-                    <div class="input-box">
-                        <input type="text" class="input-fiels" name="nom" placeholder="Nom">
-                        <img src="imgs\user.png" alt="">
-                    </div>
-
-                    <div class="input-box">
-                        <input type="text" class="input-fiels" name="prenom" placeholder="Prenom">
-                        <img src="imgs\user.png" alt="">
-                    </div>
-                </div>
-
-                <div class="input-box">
-                    <input type="email" class="input-fiels" name="e_mail" placeholder="Email">
-                    <img src="imgs\email00.png" alt="">
-                </div>
-
-                <div class="input-box">
-                    <input type="password" class="input-fiels" name="mot_passe" placeholder="Mot de passe">
-                    <img src="imgs\lock.png" alt="">
-                </div>
-
-                <div class="input-box">
-                    <input type="submit" name="registre" value="S'inscrire" class="submit">
-                </div>
-
-                <div class="tow-col">
-                    <div class="one">
-                        <input type="checkbox" name="" id="registre-check">
-                        <label for="registre-check">Souviens-toi de moi</label>
-                    </div>
-
-                    <div class="tow">
-                        <label for=""><a href="html/about.html">Continuer a Portfolio ↣</a></label>
-                    </div>
-                </div>
-            </form>
-
-        </div>
+        </footer>
     </div>
-    <script>
-        function myMenuFunction() {
-            var i = document.getElementById('navMenu');
-
-            if (i.classList.contains("responsive")) {
-                i.classList.remove("responsive");
-            } else {
-                i.classList.add("responsive");
-            }
-            // if (i.className == " nav-menu") {
-            //     i.className += " responsive";
-            // } else {
-            //     i.className = " nav-menu";
-            // }
-        }
-    </script>
-
-    <script>
-        var a = document.getElementById('loginBtn');
-        var b = document.getElementById('registreBtn');
-        var x = document.getElementById('login');
-        var y = document.getElementById('registe');
-
-        function login() {
-            x.style.left = "4px";
-            y.style.right = "-520px";
-            a.className += " white-btn";
-            b.className = "btn";
-            x.style.opacity = 1;
-            y.style.opacity = 0;
-        }
-        function registre() {
-            x.style.left = "-510px";
-            y.style.right = "5px";
-            a.className = "btn";
-            b.className += " white-btn";
-            x.style.opacity = 0;
-            y.style.opacity = 1;
-        }
-    </script>
 </body>
 
 </html>
