@@ -121,6 +121,16 @@ section {
     transform: scale(1.05);
 }
 
+.logo-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 5px double var(--bg-color);
+    background-color: var(--bg-color);
+    animation: rotateYs 7s ease-in-out infinite;
+    /* box-shadow: 0px 0px 15px var(--bg-color); */
+}
+
 .navbar a {
     font-size: 1.9rem;
     color: var(--bg-color);
@@ -131,8 +141,11 @@ section {
 
 .navbar a:hover,
 .navbar a.active {
-    border-bottom: 2px solid var(--bg-color);
-    color: var(--text-color);
+    color: var(--bg-color);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1.4rem;
+    border-bottom: none;
+    padding: 0 1.6rem;
 }
 
 #menu-icon {
@@ -234,7 +247,7 @@ span {
 
 .btns {
     display: inline-block;
-    padding: 1rem 2.8rem;
+    padding: 1rem 2.4rem;
     background: var(--main-color);
     border-radius: 7px;
     font-size: 1.6rem;
@@ -547,6 +560,13 @@ span {
     margin-bottom: 1%;
 }
 
+.btns.plus svg {
+    width: 20px;
+    height: auto;
+    fill: var(--main-color);
+    transition: 0.3s ease;
+}
+
 .carte {
     padding: 3px;
     border: 1px solid var(--main-color);
@@ -821,38 +841,80 @@ span {
 
 @media(max-width: 991px) {
     #menu-icon {
-        display: block;
-        background: var(--snd-bg-color);
-        border-bottom-right-radius: 8px;
-        border-top-left-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 5.2rem;
+        height: 5.2rem;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 1.6rem;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    #menu-ico:hover {
-        background: var(--snd-bg-color);
+    #menu-icon img {
+        width: 2.4rem;
+        height: 2.4rem;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+    #menu-icon:hover,
+    #menu-icon:focus-visible {
+        background: rgba(255, 255, 255, 0.24);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+        transform: translateY(-1px);
     }
 
     .navbar {
         position: absolute;
-        top: 100%;
-        right: -100%;
-        width: 160px;
-        min-height: 100vh;
+        top: calc(100% + 1.4rem);
+        right: 3%;
+        width: min(30rem, 84vw);
+        min-height: auto;
+        max-height: calc(100vh - 10rem);
         display: flex;
         flex-direction: column;
-        background: var(--main-color);
-        backdrop-filter: blur(10px);
-        transition: all 0.5S linear;
-        opacity: 0.8;
+        gap: 0.6rem;
+        padding: 1.2rem;
+        background: rgba(0, 127, 115, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 2rem;
+        backdrop-filter: blur(18px);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+        transform: translateX(calc(100% + 2rem));
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.35s ease, opacity 0.25s ease, visibility 0.25s ease;
     }
 
     .navbar a {
         display: block;
-        padding: 17px;
-        font-size: 20px;
+        margin-left: 0;
+        padding: 1.4rem 1.6rem;
+        font-size: 1.8rem;
+        border-radius: 1.4rem;
+        border-bottom: none;
+        color: var(--bg-color);
+        background: transparent;
     }
 
     .navbar.active {
-        right: 0;
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        color: var(--bg-color);
+        background: rgba(255, 255, 255, 0.16);
+        border-bottom: none;
     }
 
     .home {

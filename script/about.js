@@ -1,18 +1,27 @@
-﻿let menu = document.querySelector('#menu-icon');
+let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 menu.onclick = () => {
     menu.classList.toggle('bx-x');
     navbar.classList.toggle('active');
+    menu.setAttribute('aria-expanded', String(navbar.classList.contains('active')));
 }
 
 window.onscroll = () => {
     menu.classList.remove('bx-x');
     navbar.classList.remove('active');
+    menu.setAttribute('aria-expanded', 'false');
 }
 
 const navs = document.querySelectorAll('.navs')
 
+navs.forEach((navItem) => {
+    navItem.addEventListener('click', () => {
+        menu.classList.remove('bx-x');
+        navbar.classList.remove('active');
+        menu.setAttribute('aria-expanded', 'false');
+    });
+});
 window.onload = function () {
     const scrollTop = window.pageY || document.documentElement.scrollTop;
     if (scrollTop > 100) {
@@ -21,61 +30,7 @@ window.onload = function () {
         document.querySelector('.return img').style.display = 'none';
     }
 };
-window.addEventListener('scroll', function () {
-    const scrollTop = window.pageY || document.documentElement.scrollTop;
-    const active = window.pageYOffset;
-    // console.log(active)
-    if (scrollTop > 100) {
-        document.querySelector('.return img').style.display = 'block';
-    } else {
-        document.querySelector('.return img').style.display = 'none';
-    }
 
-    if (active >= 600 && active < 1200) {
-        navs[0].classList.remove("active")
-        navs[1].classList.toggle("active")
-        navs[2].classList.remove("active")
-        navs[3].classList.remove("active")
-        navs[4].classList.remove("active")
-        navs[5].classList.remove("active")
-
-    } else if (active >= 1200 && active < 1800) {
-        navs[0].classList.remove("active")
-        navs[1].classList.remove("active")
-        navs[2].classList.toggle("active")
-        navs[3].classList.remove("active")
-        navs[4].classList.remove("active")
-        navs[5].classList.remove("active")
-    } else if (active >= 1800 && active < 2400) {
-        navs[0].classList.remove("active")
-        navs[1].classList.remove("active")
-        navs[2].classList.remove("active")
-        navs[3].classList.toggle("active")
-        navs[4].classList.remove("active")
-        navs[5].classList.remove("active")
-    } else if (active >= 2400 && active < 3000) {
-        navs[0].classList.remove("active")
-        navs[1].classList.remove("active")
-        navs[2].classList.remove("active")
-        navs[3].classList.remove("active")
-        navs[4].classList.toggle("active")
-        navs[5].classList.remove("active")
-    } else if (active >= 3000 && active < 3600) {
-        navs[0].classList.remove("active")
-        navs[1].classList.remove("active")
-        navs[2].classList.remove("active")
-        navs[3].classList.remove("active")
-        navs[4].classList.remove("active")
-        navs[5].classList.toggle("active")
-    } else if (active >= 0 && active < 600) {
-        navs[0].classList.toggle("active")
-        navs[1].classList.remove("active")
-        navs[2].classList.remove("active")
-        navs[3].classList.remove("active")
-        navs[4].classList.remove("active")
-        navs[5].classList.remove("active")
-    }
-});
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const aboutToggle = document.querySelector('.about-toggle');
@@ -156,3 +111,41 @@ setInterval((e) => {
     counter++;
     // console.log(counter)
 }, 1000);
+
+// Add hover effect to nav links
+const navLinks = document.querySelectorAll('nav a');
+navLinks.forEach(link => {
+    link.addEventListener('mouseover', () => {
+        link.style.transform = 'scale(1.1)';
+    });
+    link.addEventListener('mouseout', () => {
+        link.style.transform = 'scale(1)';
+    });
+});
+
+// Add active class to current nav link
+const currentPath = window.location.pathname;
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+    } else {
+        link.classList.remove('active');
+    }
+});
+
+// add event to show active nav
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    navLinks.forEach(link => {
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section) {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        }
+    });
+});
