@@ -281,7 +281,7 @@
             </div>
         </div>
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-            <div class="col">
+            <!-- <div class="col">
                 <div class="carte">
                     <a href="../files/img/1.png"><img class="rounded img-fluid object-fit-cover d-block w-100"
                             style="height: 200px;" src="../files/img/1.png"></a>
@@ -297,10 +297,10 @@
                             plus&nbsp;</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Pop-up resto -->
-            <div class="modal fade" id="modalResto" tabindex="-1" aria-hidden="true">
+            <!-- <div class="modal fade" id="modalResto" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
 
@@ -326,7 +326,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- End pop-up resto -->
 
             <div class="col">
@@ -342,6 +342,9 @@
                             grâce à un design soigné.</p>
                         <button class="btns plus btn-primary" data-bss-hover-animate="pulse" data-bs-toggle="modal"
                             data-bs-target="#modalForum" type="button" style="font-size: 15px;">Voir plus&nbsp;</button>
+                        <button class="btns plus btn-primary" data-bss-hover-animate="pulse" data-bs-toggle="modal"
+                            type="button" style="font-size: 15px;"
+                            onclick="openInNewTab('https://forum-511.vercel.app')">Consulter&nbsp;</button>
                     </div>
                 </div>
             </div>
@@ -390,6 +393,9 @@
                         <button class="btns plus" data-bss-hover-animate="pulse" data-bs-toggle="modal"
                             data-bs-target="#modalFokontany" type="button" style="font-size: 15px;">Voir
                             plus&nbsp;</button>
+                        <button class="btns plus btn-primary" data-bss-hover-animate="pulse" data-bs-toggle="modal"
+                            type="button" style="font-size: 15px;"
+                            onclick="openInNewTab('https://github.com/Bezara06/Fokontany01')">Consulter&nbsp;</button>
                     </div>
                 </div>
             </div>
@@ -424,21 +430,62 @@
 
             <!-- End pop-up fokontany -->
             <div class="col">
-                <div class="carte"><a href="../files/img/4.png"></a><img
-                        class="rounded img-fluid object-fit-cover d-block w-100" style="height: 200px;"
-                        src="../files/img/4.png"></a>
+                <div class="carte"><a href="../files/img/univ-fen-blogs.png">
+                        <img class="rounded img-fluid object-fit-cover d-block w-100" style="height: 200px;"
+                            src="../files/img/univ-fen-blogs.png"></a>
                     <div class="py-4">
-                        <h4 style="font-size: 22.1px;">Application Java – Gestion Fokontany</h4>
-                        <p class="desc-projet" style="font-size: 15px;">Application bureautique développée en Java pour
-                            aider un fokontany à
-                            gérer ses services (certificats, demandes administratives, dossiers des habitants). Elle
-                            permet d'enregistrer les citoyens, suivre les demandes, générer des documents officiels et
-                            simplifier le travail administratif</p>
-                        <button class="btns plus" data-bss-hover-animate="pulse" type="button"
-                            style="font-size: 15px;">Voir plus&nbsp;</button>
+                        <h4 style="font-size: 22.1px;">Plateforme Numérique de l’Université d’Analanjirofo</h4>
+                        <p class="desc-projet" style="font-size: 15px;">Conception et développement d'un portail web
+                            moderne pour l’Université d’Analanjirofo. L'objectif était de créer une vitrine
+                            institutionnelle permettant de centraliser les informations académiques, de faciliter
+                            l'accès aux ressources pour les étudiants et de renforcer la visibilité de l'établissement
+                            au niveau national et international.</p>
+                        <button class="btns plus" data-bss-hover-animate="pulse" data-bs-toggle="modal"
+                            data-bs-target="#modalUniv" type="button" style="font-size: 15px;">Voir
+                            plus&nbsp;</button>
+                        <button class="btns plus btn-primary" data-bss-hover-animate="pulse" data-bs-toggle="modal"
+                            type="button" style="font-size: 15px;"
+                            onclick="openInNewTab('https://univ-fen.vercel.app')">Consulter&nbsp;</button>
                     </div>
                 </div>
             </div>
+
+            <!-- pop up univ -->
+            <div class="modal fade" id="modalUniv" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Plateforme Numérique de l’Université d’Analanjirofo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <img src="../files/img/univ-fen-blogs.png" class="img-fluid rounded mb-3"
+                                alt="Projet fokontany">
+                            <h2>Aperçu du projet</h2>
+                            <p class="fs-2">
+                                Fonctionnalités clés
+                                Système d'actualités : Un flux dynamique pour les annonces administratives et les
+                                événements de la vie étudiante.
+                                Espace Pédagogique : Présentation détaillée des filières, des parcours de formation et
+                                des débouchés.
+                                Interface Responsive : Une expérience optimisée pour mobile, essentielle pour les
+                                étudiants utilisant principalement leur smartphone.
+                                Section Admission : Un tunnel clair pour guider les futurs étudiants dans leurs
+                                démarches d'inscription.
+                                Technologies utilisées
+                            </p>
+                            <ul>
+                                <li>Design responsive</li>
+                                <li>Interface intuitive</li>
+                                <li>Contenu institutionnel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end pop up univ -->
         </div>
         <div class="view-project">
             <a class="link-to-project" href="projet.html" target="_blank">Voir tous mes projets<svg
@@ -527,6 +574,11 @@
             backDelay: 1200,
             loop: true,
         });
+
+        // function send to new tab
+        function openInNewTab(url) {
+            window.open(url, '_blank').focus();
+        }
     </script>
 
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
