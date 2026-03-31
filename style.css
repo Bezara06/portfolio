@@ -32,6 +32,44 @@ body {
         linear-gradient(180deg, #f6fffe 0%, #ffffff 42%, #f4fbfa 100%);
 }
 
+@keyframes card {
+    from {
+        translate: 0 -50% 0;
+    }
+}
+
+@keyframes card-contents {
+    from {
+        opacity: 0;
+        height: 0px;
+    }
+
+    to {
+        opacity: 1;
+        height: auto;
+    }
+}
+
+.card {
+    overflow-y: clip;
+    /* Hide any overflow in the y-axis */
+
+    timeline-trigger:
+        --t view() contain 15% contain 85% / entry 100% exit 0%;
+    trigger-scope: --t;
+
+    animation: unclip var(--duration) ease-in-out both;
+    animation-trigger: --t play-forwards play-backwards;
+}
+
+.card>* {
+    interpolate-size: allow-keywords;
+    /* To animate to `height: auto` */
+
+    animation: card-contents var(--duration) ease-in-out both;
+    animation-trigger: --t play-forwards play-backwards;
+}
+
 img {
     max-width: 100%;
     display: block;
@@ -594,4 +632,16 @@ h1 {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+
+@media (max-width: 480px) {
+  nav.nav {
+    justify-content: center;
+  }
+
+  a.nav-cta {
+    margin: 10px auto;
+    display: flex; /* or inline-flex */
+    width: fit-content;
+  }
 }
