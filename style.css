@@ -52,6 +52,13 @@ body {
     }
 }
 
+.logoSVG {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    box-shadow: 0 10px 20px rgba(0, 127, 115, 0.16);
+    background: #ffffff;
+}
 .card {
     overflow-y: clip;
     /* Hide any overflow in the y-axis */

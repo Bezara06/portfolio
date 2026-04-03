@@ -1,0 +1,11 @@
+<svg viewBox="0 0 400 400">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#008175"/>
+        <stop offset="100%" stop-color="#C8FEFA"/>
+      </linearGradient>
+    </defs>
+    <path d="M200 80 L300 320 L260 320 L235 260 L165 260 L140 320 L100 320 Z
+           M180 230 L220 230 L200 170 Z"
+        fill="url(#gradBA)" filter="url(#glow)"/>
+  </svg>
