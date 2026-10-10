@@ -116,7 +116,7 @@ setInterval((e) => {
 const navLinks = document.querySelectorAll('nav a');
 navLinks.forEach(link => {
     link.addEventListener('mouseover', () => {
-        link.style.transform = 'scale(1.1)';
+        link.style.transform = 'scale(1)';
     });
     link.addEventListener('mouseout', () => {
         link.style.transform = 'scale(1)';
@@ -142,6 +142,7 @@ window.addEventListener('scroll', () => {
             const sectionTop = section.offsetTop - 100;
             const sectionHeight = section.offsetHeight;
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                console.log(link.getAttribute('href'));
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');

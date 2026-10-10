@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Developpeur Java SE Madagascar</title>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.dark {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+            transition: border-color 0.3s;
+        }
+
+        body.dark header {
+            border-bottom-color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        body.light nav a {
+            color: #000000;
+        }
+
+        body.dark nav a {
+            color: #ffffff;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        main {
+            min-height: 80vh;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.8;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        body.light .cta-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        body.dark .cta-button {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            transition: border-color 0.3s;
+        }
+
+        body.dark footer {
+            border-top-color: #333;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        body.light .content-section {
+            background-color: #f8f9fa;
+        }
+
+        body.dark .content-section {
+            background-color: #2a2a2a;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 0;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            main {
+                padding: 40px 10px;
+            }
+
+            .hero {
+                margin-bottom: 40px;
+            }
+
+            .cta-button {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 14px 0;
+            }
+
+            .content-section {
+                padding: 18px;
+            }
+
+            footer {
+                padding: 15px 10px;
+            }
+        }
+    </style>
+    </head>
+    <body class="light">
+        <header>
+            <div class="container">
+                <div class="logo">Dev Portfolio</div>
+                <nav>
+                    <a href="./portfolio">Portfolio</a>
+                    <a href="#about">À propos</a>
+                    <a href="#support">Support</a>
+                    <button class="theme-toggle" id="themeToggle"
+                        title="Basculer le thème"><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M11.1875 2C11.164063 2.019531 11.148438 2.042969 11.125 2.0625C6.027344 2.503906 2 6.792969 2 12C2 17.207031 6.027344 21.496094 11.125 21.9375C11.148438 21.957031 11.164063 21.980469 11.1875 22L12 22C17.5 22 22 17.5 22 12C22 11.65625 21.972656 11.304688 21.9375 10.96875C21.457031 6.277344 17.722656 2.542969 13.03125 2.0625C12.695313 2.027344 12.34375 2 12 2 Z M 9.03125 4.59375C7.785156 6.625 7 9.199219 7 12C7 14.800781 7.785156 17.375 9.03125 19.40625C6.097656 18.21875 4 15.347656 4 12C4 8.652344 6.097656 5.78125 9.03125 4.59375Z"
+                                fill="#292A2A" />
+                        </svg></button>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <section class="hero">
+                    <h1>Bienvenue</h1>
+                    <p>Découvrez mon portfolio et mes projets de
+                        développement</p>
+                    <a href="#portfolio" class="cta-button">Voir mes projets</a>
+                </section>
+
+                <section id="portfolio" class="content-section">
+                    <h2>Portfolio</h2>
+                    <p>Mes réalisations et projets les plus récents...</p>
+                </section>
+
+                <section id="about" class="content-section">
+                    <h2>À propos</h2>
+                    <p>Développeur passionné avec une expérience en
+                        développement web moderne...</p>
+                </section>
+
+                <section id="support" class="content-section">
+                    <h2>Support</h2>
+                    <p>Besoin d'aide ? Contactez-moi via email ou les réseaux
+                        sociaux.</p>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+        </footer>
+
+        <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Charger le thème sauvegardé
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.classList.remove('light', 'dark');
+        body.classList.add(savedTheme);
+        updateToggleIcon(savedTheme);
+
+        // Basculer le thème
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.classList.contains('light') ? 'light' : 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.classList.remove(currentTheme);
+            body.classList.add(newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        const moon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M11.1875 2C11.164063 2.019531 11.148438 2.042969 11.125 2.0625C6.027344 2.503906 2 6.792969 2 12C2 17.207031 6.027344 21.496094 11.125 21.9375C11.148438 21.957031 11.164063 21.980469 11.1875 22L12 22C17.5 22 22 17.5 22 12C22 11.65625 21.972656 11.304688 21.9375 10.96875C21.457031 6.277344 17.722656 2.542969 13.03125 2.0625C12.695313 2.027344 12.34375 2 12 2 Z M 9.03125 4.59375C7.785156 6.625 7 9.199219 7 12C7 14.800781 7.785156 17.375 9.03125 19.40625C6.097656 18.21875 4 15.347656 4 12C4 8.652344 6.097656 5.78125 9.03125 4.59375Z" fill="#292A2A" />
+</svg>`;
+
+const sun = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M11.1875 2C11.164063 2.019531 11.148438 2.042969 11.125 2.0625C6.027344 2.503906 2 6.792969 2 12C2 17.207031 6.027344 21.496094 11.125 21.9375C11.148438 21.957031 11.164063 21.980469 11.1875 22L12 22C17.5 22 22 17.5 22 12C22 11.65625 21.972656 11.304688 21.9375 10.96875C21.457031 6.277344 17.722656 2.542969 13.03125 2.0625C12.695313 2.027344 12.34375 2 12 2 Z M 9.03125 4.59375C7.785156 6.625 7 9.199219 7 12C7 14.800781 7.785156 17.375 9.03125 19.40625C6.097656 18.21875 4 15.347656 4 12C4 8.652344 6.097656 5.78125 9.03125 4.59375Z" fill="#292A2A" />
+</svg>`;
+
+        function updateToggleIcon(theme) {
+            themeToggle.textContent = theme === 'light' ? moon : sun;
+        }
+    </script>
+    </body>
+</html>
